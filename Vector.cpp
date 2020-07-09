@@ -34,11 +34,22 @@ Vector::Vector(std::size_t capacity)
    
    void Vector::pushFront(int element)
    {
+             if(this->m_capacity > this->m_size) 
+    {
 
+        for(size_t i = m_size; i > 0; --i){
+            this->m_data[i] = this->m_data[i-1];
+        }
+        this->m_data[0] = element;
+        this->m_size++;
+    }
    }
     void Vector::pushBack(int element)
     {
-
+          if(this->m_capacity > this->m_size) 
+    {
+        this->m_data[m_size++] = element;
+    }
     }
 int Vector::getElement(std::size_t idx)
    {

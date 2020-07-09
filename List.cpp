@@ -10,7 +10,9 @@ List::List()
 {
      
 
-   
+   m_size=0;
+   m_tail=NULL;
+   m_head=NULL;
    
 }
   void List::insert(std::size_t idx, int element)
@@ -105,5 +107,14 @@ int List::getElement(std::size_t idx)
     }
   List::~List()
 {
-   
+     ListNode* current = m_head;
+    ListNode* next;
+    while( current != NULL ) 
+    {
+        next = current->getNext();
+        delete current;
+        current = next;
+    }
+    m_head = NULL;
+    m_tail = NULL;
 }
