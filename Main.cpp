@@ -1,13 +1,21 @@
-#include"Vector.hpp";
 #include<iostream>
+#include "List.hpp"
+#include "ListNode.hpp"
+#include "Vector.hpp"
 using namespace std;
-int main
+int main()
 {
-   Vector vec(5);
-   vec.pushBack(0);
-   vec.pushBack(1);
-  vec.pushBack(2);
-  vec.pushFront(3);
-  std::cout<< vec.getFront()<< " " << vec.getBack() << " " << vec.getElement(1) <<" " << vec.getCapacity()<<" " <<std::endl;
+   Vector vec;
+    std::size_t end = vec.getCapacity();
 
+    for (std::size_t idx = 0; idx < end; ++idx){
+        vec.setElement(idx, std::rand());
+    }
+
+    int sum = 0;
+
+    for (std::size_t idx = 0; idx < end; ++idx){
+        sum += vec.getElement(idx);
+    }
+   return sum;
 }
