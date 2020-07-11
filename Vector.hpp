@@ -1,24 +1,28 @@
+
 #include<cstddef>
+#include <cstdlib>
 
-
+template <typename T>
 class Vector
 {
     public :
+        
 
-     Vector();
+     Vector(const Vector& rhs);
+     
      Vector(std::size_t capacity);
     ~Vector();
      std::size_t getSize();
      std::size_t getCapacity();
-    void insert(std::size_t idx,int element);
-    void pushFront(int element);
-    void pushBack(int element);
+    void insert(std::size_t idx,T element);
+    void pushFront(T element);
+    void pushBack(T element);
     int getElement(std::size_t idx);
     int getFront();
     int getBack();
-    void setElement(std::size_t idx, int elemnet);
-    void setFront(int element);
-    void setBack(int element);
+    void setElement(std::size_t idx, T element);
+    void setFront(T element);
+    void setBack(T element);
     void clear();
     bool empty();
     
@@ -28,4 +32,5 @@ class Vector
     std::size_t m_capacity;
     int* m_data;
     void reserve(std::size_t newCapacity);
+     T m_data;
 };
