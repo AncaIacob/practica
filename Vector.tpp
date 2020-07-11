@@ -1,29 +1,40 @@
-#include "Vector.hpp"
 #include<cstddef>
 #include<cstdlib>
-std::size_t Vector::getSize()
+#include"Vector.hpp"
+
+template <typename T>
+Vector<T>::Vector(const Vector& rhs) 
+{ 
+    m_size = rhs.m_size;
+    m_capacity = rhs.m_capacity; 
+    m_data = new T[m_capacity]; 
+    memcpy(m_data, rhs.m_data, m_capacity * sizeof(T));
+
+    
+} 
+
+template <typename T>
+Vector<T>::~Vector() 
+{ 
+    delete[] this->m_data; 
+}
+
+template <typename T>
+size_t Vector<T>::getSize()
 {
     return this->m_size;
 }
-std::size_t Vector::getCapacity()
+
+template <typename T>
+size_t Vector<T>::getCapacity()
 {
     return this->m_capacity;
 }
-Vector::Vector(std::size_t capacity)
-{
-     this->m_size = 0;
-     this->m_capacity = capacity; 
-     this->m_data = new int[capacity];
 
-   for(std::size_t idx= 0; idx<Vector::getCapacity();+idx)
-   {
-       this->m_data[idx]=std::rand();
-   }
-   
-}
-  void Vector::insert(std::size_t idx, int element)
-   {
-       if(idx >= 0 && idx <= this->m_size){
+template <typename T>
+void Vector<T>::insert(size_t idx, T element)
+{
+    if(idx >= 0 && idx <= this->m_size){
         for(size_t i = idx; i < this->m_size - 1; ++i){
             this->m_data[i+1] = this->m_data[i];
             this->m_size++;
@@ -31,58 +42,67 @@ Vector::Vector(std::size_t capacity)
          this->m_data[idx] = element;
     }
 }
-   
-   void Vector::pushFront(int element)
-   {
-             if(this->m_capacity > this->m_size) 
-    {
 
-        for(size_t i = m_size; i > 0; --i){
-            this->m_data[i] = this->m_data[i-1];
-        }
-        this->m_data[0] = element;
-        this->m_size++;
-    }
-   }
-    void Vector::pushBack(int element)
-    {
-          if(this->m_capacity > this->m_size) 
-    {
-        this->m_data[m_size++] = element;
-    }
-    }
-int Vector::getElement(std::size_t idx)
-   {
-      return this->m_data[idx];
-   }
-   int Vector::getFront()
-   {
-      return this->m_data[0];
-   }
-    int Vector::getBack()
-    {
-        return this->m_data[this->m_size-1];
-    }
-   void Vector::setElement(std::size_t idx, int element)
-   {
-       this->m_data[idx]=element;
-   }
-   void Vector::setFront(int element)
-   {
-     this->m_data[0] = element;
-   }
-  void Vector::setBack(int element)
-    {
-        this->m_data[this->m_size] = element;
-    }
-Vector::~Vector()
+template <typename T>
+void Vector<T>::pushFront(T element)
 {
-   for(std::size_t idx= 0; idx<Vector::getCapacity();+idx)
+    if(this->m_capacity>this->m_size)
    {
-       this->m_data[idx]=0;
+       for(size_t i=m_size;i>0;++i)
+       {
+           this->m_data[i]=this->m_data[i+1];
+       }
+       this->m_data[0]= element;
    }
 }
-void Vector::clear()
+
+template <typename T>
+void Vector<T>::pushBack(T element)
+{
+   if(this->m_capacity>this->m_size)
+     {
+         for(size_t i=m_size;i>0;--i)
+         {
+             this->m_data[i]=this->m_data[i-1];
+         }
+         this->m_data[0]=0;
+     }
+}
+
+template <typename T>
+T Vector<T>::getElement(size_t idx)
+{
+    return this->m_data[idx];
+}
+
+template <typename T>
+T Vector<T>::getFront()
+{
+    return this->m_data[0];
+}
+
+template <typename T>
+T Vector<T>::getBack()
+{
+    return this->m_data[this->m_size-1];
+}
+
+
+
+template <typename T>
+void Vector<T>::setFront(T element)
+{
+    this->m_data[0] = element;
+}
+
+template <typename T>
+void Vector<T>::setBack(T element)
+{
+    this->m_data[this->m_size] = element;
+}
+
+template <typename T>
+void Vector<T>::clear()
 {
 
     for(size_t i = 0; i < this->m_size; ++i){
@@ -90,7 +110,8 @@ void Vector::clear()
     }
 }
 
-bool Vector::empty()
+template <typename T>
+bool Vector<T>::empty()
 {
     bool ok = 1;
     while(ok)
@@ -104,11 +125,13 @@ bool Vector::empty()
     }
     return false;
 }
-void Vector::reserve(std::size_t newCapacity)
+
+template <typename T>
+void Vector<T>::reserve(size_t newCapacity)
 {
     if(this->m_capacity < newCapacity)
     {
-        int* newData = new int[newCapacity]; 
+        T* newData = new T[newCapacity]; 
         this->m_capacity = newCapacity;
 
         for(size_t i = 0; i < this->m_size; ++i){
@@ -118,4 +141,6 @@ void Vector::reserve(std::size_t newCapacity)
         delete[] this->m_data; 
         this->m_data = newData;
     }
+}
+
 }
