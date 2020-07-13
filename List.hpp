@@ -1,39 +1,33 @@
 #include <cstddef>
 #include "ListNode.hpp"
-
-template <typename T>
-class List 
-{
-     
-
-    public : 
-        List();
-      ListNode (const ListNode& rhs)
+template<typename T>
+ class List 
+ {
+     public:
+      List();
+      List(const ListNode& rhs);
       ~List();
-
-    
-     std::size_t getSize();
-    
-    void insert(std::size_t idx, T data);
-    void pushFront( T data);
-    void pushBack( T data);
-    int getElement(std::size_t idx);
+    std:: size_t getSize();
+    void insert(std::size_t idx , T element);
+    void pushFront(T element);
+    void pushBack(T element);
+    T getElement(std::size_t idx);
     int getFront();
-    int getBack();
-    void setElement(std::size_t idx,  T datat);
-    void setFront( T data);
-    void setBack( T data);
+    T getBack();
+    void erase(std::size_t idx)
+    void popFront();
+    void popBack();
+    void setElement(std::size_t idx, T element);
+    void setFront(T element);
+    void setBack(T element);
     void clear();
-    bool emplty();
-    
+    bool empty();
 
-    private :
-    std::size_t m_size;
+    private:
+    size_t m_size;
     ListNode* m_head;
     ListNode* m_tail;
-    int* m_data;
-    T m_data;
-    void reserve(std::size_t newCapacity);
-    
 
-};
+
+ };
+ #include "List.tpp"

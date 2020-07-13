@@ -1,20 +1,26 @@
-#include<iostream>
-#include "List.hpp"
 #include "Vector.hpp"
-using namespace std;
-int main()
-{
-   Vector vec;
-    std::size_t end = vec.getCapacity();
+#include "List.hpp"
+#include "ListNode.hpp"
+#include <cstdlib>
 
-    for (std::size_t idx = 0; idx < end; ++idx){
-        vec.setElement(idx, std::rand());
-    }
+int main(){
+   Vector<int> vec;
+  vec.pushBack(0);
+  vec.pushBack(1);
+  vec.pushBack(2);
+  vec.pushBack(3);
+  vec.pushBack(4);
+  vec.pushFront(5);
 
-    int sum = 0;
+  std::cout << vec[0] << std::endl; 
+  std::cout << vec[1] << std::endl; 
+  std::cout << vec[2] << std::endl; 
 
-    for (std::size_t idx = 0; idx < end; ++idx){
-        sum += vec.getElement(idx);
-    }
-   return sum;
+  Queue<int, List> myq;
+  myq.push(6);
+  myq.push(7);
+  myq.push(8);
+  myq.pop();
+  std::cout << myq;
+
 }

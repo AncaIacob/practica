@@ -17,9 +17,9 @@ class Vector
     void insert(std::size_t idx,T element);
     void pushFront(T element);
     void pushBack(T element);
-    int getElement(std::size_t idx);
-    int getFront();
-    int getBack();
+    Tvalue getElement(std::size_t idx);
+    Tvalue getFront();
+    Tvalue getBack();
     void setElement(std::size_t idx, T element);
     void setFront(T element);
     void setBack(T element);
