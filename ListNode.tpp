@@ -69,7 +69,7 @@ ListNode<T>::ListNode (const ListNode& rhs)
 {
   m_prev=rhs.m_prev;
   m_next=rhs.m_next;
-  m_data=rhs.m_data
+  m_data=rhs.m_data;
 }
 template<typename T>
 ListNode<T>::~ListNode()

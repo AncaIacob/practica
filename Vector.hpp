@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <cstdlib>
+#include<iostream>
 template<typename T>
 class VectorIterator
 { public:

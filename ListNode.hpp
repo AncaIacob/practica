@@ -1,6 +1,6 @@
 #ifndef LIST_HPP
 #define LIST_HPP
-
+#include<iostream>
 #include <cstddef>
 template<typename T>
 class ListIterator
@@ -39,8 +39,6 @@ class ListNode
     ListNode* m_prev;
     ListNode* m_next;
     T m_data;
-
-    
 
     
 };

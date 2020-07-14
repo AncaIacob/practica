@@ -1,8 +1,8 @@
-  
 #ifndef Queue_HPP
 #define Queue_HPP
 #include <cstddef>
 #include <cstdlib>
+#include<iostream>
 
 template<typename T,typename Tcontainer>
 class Queue
@@ -25,3 +25,4 @@ class Queue
     private:
     Tcontainer m_container;
 };
+#endif

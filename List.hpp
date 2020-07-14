@@ -1,11 +1,9 @@
 #ifndef LIST_HPP
 #define LIST_HPP
+#include<iostream>
 #include <cstddef>
 #include "ListNode.hpp"
 template<typename T>
- class List 
- {
-   public:template<typename T>
 class ListIterator
 {
   public:
@@ -56,3 +54,4 @@ template<typename T>
 
  };
  #endif
+ #include "List.tpp"

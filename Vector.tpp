@@ -46,10 +46,12 @@ constexpr std::size_t INITIAL_CAPACITY = 124;
       return *this;
   }
   VectorIterator<T>& VectorIterator<T>::operator+=(std::size_t difference)
+  {
       return m_value+=difference;
       return *this;
   }
   VectorIterator<T>& VectorIterator<T>::operator-=(std::size_t difference)
+  {
       return m_value-=difference;
       return *this;
   }
@@ -160,9 +162,9 @@ std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
 }
 
   template <typename T>
- int Vector<T>::pushFront(T element)
+ void Vector<T>::pushFront(T element)
  {
-   if(this->m_capacity>this->m_size)
+  if(this->m_capacity>this->m_size)
    {
        for(size_t i=m_size;i>0;++i)
        {
@@ -173,7 +175,7 @@ std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
  }
 
   template <typename T>
- int Vector<T>::pushBack(T element)
+ void Vector<T>::pushBack(T element)
  {
      if(this->m_capacity>this->m_size)
      {

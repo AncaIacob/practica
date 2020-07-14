@@ -1,5 +1,6 @@
 #include<iostream>
 #include <cstdlib>
+#include<iostream>
 #include "Queue.hpp"
  template <typename T, template <typename> typename Tcontainer>
  Queue<T,Tcontainer>::Queque()
@@ -34,7 +35,7 @@ std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& myq)
 
  }
  template <typename T,template <typename> typename Tcontainer>
- void Queque<T,Tcontainer>::push(T element)
+ void Queue<T,Tcontainer>::push(T element)
  {
     m_container.pushBack(element);
  }
@@ -56,12 +57,12 @@ template <typename T,template <typename> typename Tcontainer>
     returnh m_container.empty();
  }using TIterator = typename TContainer::TIterator;
  template <typename T,typename Tcontainer>
- Queque<T,Tcontainer>::Queque()
+ Queue<T,Tcontainer>::Queue()
  {
      m_container=0;
  }
  template <typename T,typename Tcontainer>
- Queque<T,Tcontainer>::Queque(const Queque&rhs)
+ Queue<T,Tcontainer>::Queue(const Queue&rhs)
  {
      m_container=rhs.m_container;
  }
@@ -88,24 +89,24 @@ std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& myq)
 
  }
  template <typename T, typename Tcontainer>
- void Queque<T,Tcontainer>::push(T element)
+ void Queue<T,Tcontainer>::push(T element)
  {
     m_container.pushBack(element);
  }
  template <typename T,typename Tcontainer>
- void Queque<T,Tcontainer>::pop(T element)
+ void Queue<T,Tcontainer>::pop(T element)
  {
       T value = m_container.getFront();
       m_container.popFront();
       return value;
  }
 template <typename T, typename Tcontainer>
- void Queque<T,Tcontainer>::clear()
+ void Queue<T,Tcontainer>::clear()
  {
    m_size=0;
  }
  template <typename T,typename Tcontainer>
- bool Queque<T,Tcontainer>::isEmpty()
+ bool Queue<T,Tcontainer>::isEmpty()
  {
     return m_container.empty();
  }
