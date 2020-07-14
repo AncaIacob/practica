@@ -1,6 +1,63 @@
 #include "ListNode.hpp"
 #include <cstdlib>
 template <typename T>
+ ListIterator<T>::ListIterator(T* value):m_value(value)
+ {
+
+ }
+ template<typename T>
+ ListIterator<T>::ListIterator(const ListIterator& rhs)
+ {
+     m_value=rhs.m_value;
+ }
+ template<typename T>
+  ListIterator<T>& ListIterator<T>::operator=(const ListIterator& rhs)
+  {
+      return m_value=rhs.m_value;
+      return *this;
+  }
+  template<typename T>
+  bool ListIterator<T>::operator!=(const ListIteratorr& rhs)
+  {
+      return m_value!=rhs.m_value;
+  }
+  template<typename T>
+  bool ListIterator<T>::operator<(const ListIterator& rhs)
+  {
+       if(m_value<rhs.m_value)
+       return m_value;
+       else
+       return
+       rhs.m_value;
+  }
+  template<typename T>
+  ListIterator<T>& ListIterator<T>::operator++()
+  {
+      return ++m_value;
+      return *this;
+  }
+  template<typename T>
+  ListIterator<T>& ListIterator<T>::operator--()
+  {
+      return --m_value;
+      return *this;
+  }
+  ListIterator<T>& ListIterator<T>::operator+=(std::size_t difference)
+      return m_value+=difference;
+      return *this;
+  }
+  ListIterator<T>& ListIterator<T>::operator-=(std::size_t difference)
+      return m_value-=difference;
+      return *this;
+  }
+    template<typename T>
+  T& ListIterator<T>::operator*()
+  {
+      return *m_value;
+    
+  }
+
+template <typename T>
 ListNode<T>::ListNode( ListNode*prev, ListNode* next, T data )
 {
   m_prev=prev;
@@ -17,14 +74,8 @@ ListNode<T>::ListNode (const ListNode& rhs)
 template<typename T>
 ListNode<T>::~ListNode()
 {
-  if(m_prev != NULL)
-     {
-        m_prev->m_next = m_next;
-     } 
-     if(m_next != NULL)
-     {
-        m_next->m_prev = m_prev;
-     }
+  delete [] m_data;
+  m_data=nullptr;
 }
 template <typename T>
 ListNode<T>& ListNode<T>::operator=(const ListNode& rhs)
@@ -38,41 +89,39 @@ ListNode<T>& ListNode<T>::operator=(const ListNode& rhs)
 template <typename T>
 T& getPrev()
 {
-    return this-> m_prev;
+    return  m_prev;
 }
 template <typename T>
-T& getNext()
+T& ListNode<T>::getNext()
 {
-  return this->m_next;
+  return m_next;
 }
 template <typename T>
 void ListNode<T>::setPrev(ListNode* prev)
 {
-    this->m_prev=prev;
+    m_prev=prev;
 }
 template <typename T>
 void ListNode<T>::setNext(ListNode* next)
 {
-  this->m_next=next;
+  m_next=next;
 
 }
 template <typename T>
-T& getData()
+T& ListNode<T>::getData()
 {
-  return this->m_data;
+  return m_data;
 };
 template <typename T>
 void ListNode<T>::setData(T data)
 {
-   this->m_data=data->m_data;
-   this->m_next=data->m_next;
-   this->m_prev=data->m_prev;
+  m_data=data;
 }
 template<typename U>
 std::ostream& operator<<(std::ostream& os, const ListNode<U>& vec)
 {
-    os << "prev: "<< ((ln.m_prev != NULL) ?  std::to_string(ln.m_prev->m_data) : "NULL") << "\n";  
+    os << "prev: " << ((ln.m_prev != NULL) ?  std::to_string(ln.m_prev->m_data) : "NULL") << "\n";  
     os << "data: " << ln.m_data << "\n"; 
-    os << "next: "<< ((ln.m_next != NULL) ?  std::to_string(ln.m_next->m_data) : "NULL") << "\n";
+    os << "next: " << ((ln.m_next != NULL) ?  std::to_string(ln.m_next->m_data) : "NULL") << "\n";
    return os;
 }

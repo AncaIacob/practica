@@ -1,14 +1,14 @@
-#ifndef PriorityQueque_HPP
-#define PriorityQueque_HPP
+#ifndef PriorityQueue_HPP
+#define PriorityQueue_HPP
 #include <cstddef>
 template <typename T, template <typename> typename TContainer>
-class PriorityQueque
+class PriorityQueue
 {
     public:
-    PriorityQueque();
-    PriorityQueque(const PriorityQueque& rhs);
-    ~PriorityQueque();
-    PriorityQueque<T,TContainer>& operator=(const PriorityQueue& rhs);
+    PriorityQueue();
+    PriorityQueue(const PriorityQueue& rhs);
+    ~PriorityQueue();
+    PriorityQueue<T,TContainer>& operator=(const PriorityQueue& rhs);
     size_t getSize();
     void push(T element);
     T pop(T element);
@@ -19,5 +19,5 @@ class PriorityQueque
     private:
     TContainer m_container;
 };
-#include "PriorityQueque.hpp"
+#include "PriorityQueue.hpp"
 #endif

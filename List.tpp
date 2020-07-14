@@ -1,6 +1,63 @@
 #include "List.hpp"
 #include<cstddef>
 template <typename T>
+ ListIterator<T>::ListIterator(T* value):m_value(value)
+ {
+
+ }
+ template<typename T>
+ ListIterator<T>::ListIterator(const ListIterator& rhs)
+ {
+     m_value=rhs.m_value;
+ }
+ template<typename T>
+  ListIterator<T>& ListIterator<T>::operator=(const ListIterator& rhs)
+  {
+      return m_value=rhs.m_value;
+      return *this;
+  }
+  template<typename T>
+  bool ListIterator<T>::operator!=(const ListIteratorr& rhs)
+  {
+      return m_value!=rhs.m_value;
+  }
+  template<typename T>
+  bool ListIterator<T>::operator<(const ListIterator& rhs)
+  {
+       if(m_value<rhs.m_value)
+       return m_value;
+       else
+       return
+       rhs.m_value;
+  }
+  template<typename T>
+  ListIterator<T>& ListIterator<T>::operator++()
+  {
+      return ++m_value;
+      return *this;
+  }
+  template<typename T>
+  ListIterator<T>& ListIterator<T>::operator--()
+  {
+      return --m_value;
+      return *this;
+  }
+  ListIterator<T>& ListIterator<T>::operator+=(std::size_t difference)
+      return m_value+=difference;
+      return *this;
+  }
+  ListIterator<T>& ListIterator<T>::operator-=(std::size_t difference)
+      return m_value-=difference;
+      return *this;
+  }
+    template<typename T>
+  T& ListIterator<T>::operator*()
+  {
+      return *m_value;
+    
+  }
+
+template <typename T>
 List<T>::List()
 {
     m_size=0;
@@ -10,7 +67,9 @@ List<T>::List()
 template <typename T>
 List<T>::List(const ListNode& rhs);
 {
-   
+    m_size = 0;
+    m_head = NULL;
+    m_tail = NULL;
 
    ListNode<T>*p = rhs.m_head;
    while(p != NULL)
@@ -124,68 +183,38 @@ template <typename T>
 
 }
 template <typename T>
-void List<T>::setElement(std::size_t idx, T element)
+T& List<T>::operator[](std::size_t idx)
 {
-    ListNode<T>* p = m_head;
-    if(idx == 0) 
-    {
-       setFront(element);
-    }
-    if(idx == m_size)
-    {
-       setBack(element);
-    }
-    while(idx)
+   ListNode<T>* p = m_head;
+   while(idx)
     {
         p = p->getNext();
         --idx;
     }
 
-    p->setData(element);
+    return p->getData();
 }
-template <typename T>
-void List<T>::setBack(T element) 
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const List<U>& ln)
 {
-    m_head->setBack(T element);
-}
-template <typename T>
-void List<T>::setFront(T element) 
-{
-    m_tail->setFront(T element);
-}
-
-template <typename T>
-void List<T>::erase(std::size_t idx)
-{
-     ListNode<T>* p = m_head;
-    if(idx == 0) 
-    {
-        popFront();
-    }
-    if(idx == m_size)
-    {
-        popBack();
-    }
-    while(idx)
-    {
-        p = p->getNext();
-        --idx;
-    }
-     delete[]this->p;
-    --m_size;
+   ListNode<U>*p = ln.m_head;
+   while(p != NULL)
+   {
+       os<< std::to_string(p->getData()) << " ";
+       p = p->getNext();
+   }
+    os << "\n";
+    return os;
 }
 
 template <typename T>
 void List<T>::clear()
 {
-     for(size_t i = 0; i < this->m_size; ++i){
-        m_head=m_tail=NULL;
-    }
     m_size=0;
 
 }
 template <typename T>
-bool List<T>::empty()
+bool List<T>::isEmpty()
 {
   
     if(m_size==0)
@@ -196,15 +225,15 @@ bool List<T>::empty()
 template <typename T>
 List<T>::~List()
 {
-    ListNode* current = m_head;
-    ListNode* next;
-    while( current != NULL ) 
-    {
-        next = current->getNext();
-        delete current;
-        current = next;
-    }
-    m_head = NULL;
-    m_tail = NULL;
-    --m_size;
+   delete [] m_data;
+   m_data=nulptr;
 }
+ ListIterator<T> List<T>::begin()
+ {
+     return ListIterator<T>(m_data);
+ }
+ template<typename T>
+ ListIterator<T> List<T>::end()
+ {
+     return ListIterator<T>(m_data+m_size);
+ }
