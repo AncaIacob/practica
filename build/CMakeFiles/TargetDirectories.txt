@@ -1,0 +1,3 @@
+/home/anca/.ssh/practica/build/CMakeFiles/rebuild_cache.dir
+/home/anca/.ssh/practica/build/CMakeFiles/ex1.dir
+/home/anca/.ssh/practica/build/CMakeFiles/edit_cache.dir

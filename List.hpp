@@ -1,6 +1,7 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 #include<iostream>
+#include<cstdlib>
 #include <cstddef>
 #include "ListNode.hpp"
 template<typename T>
@@ -28,8 +29,8 @@ template<typename T>
       List(const ListNode& rhs);
       ~List();
       List<T>&operator=(const List& rhs);
-      const T& operator[](std::size_t idx) const;//erase
-      T& operator[](std::size_t idx);//setElement
+      const T& operator[](std::size_t idx) const;
+      T& operator[](std::size_t idx);
      size_t getSize();
     void insert(std::size_t idx , T element);
     void pushFront(T element);
@@ -54,4 +55,4 @@ template<typename T>
 
  };
  #endif
- #include "List.tpp"
+#include "List.tpp"

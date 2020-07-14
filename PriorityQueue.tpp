@@ -1,14 +1,19 @@
+#ifndef PRIORITYQUEUE_HPP
+#define PRIORITYQUEUE_HPP
 #include "PriorityQueue.hpp" 
-#include <iostream>
+#include<iostream>
+#include <cstddef>
+
+
 
 using TIterator = typename TContainer::TIterator;
 template <typename T,typename TContainer>
-PriorityQueque<T,TContainer>::PriorityQueque()
+PriorityQueue<T,TContainer>::PriorityQueque()
 {
     m_container=0;
 }
 template <typename T, typename TContainer>
- PriorityQueque<T,TContainer>::PriorityQueque(const PriorityQueue& rhs);
+ PriorityQueue<T,TContainer>::PriorityQueue(const PriorityQueue& rhs);
  {
      m_container=rhs.m_container;
  }

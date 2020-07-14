@@ -3,7 +3,7 @@
 #include<iostream>
 #include "Queue.hpp"
  template <typename T, template <typename> typename Tcontainer>
- Queue<T,Tcontainer>::Queque()
+ Queue<T,Tcontainer>::Queue()
  {
      m_container=0;
  }
@@ -55,7 +55,8 @@ template <typename T,template <typename> typename Tcontainer>
  bool Queue<T,Tcontainer>::empty()
  {
     returnh m_container.empty();
- }using TIterator = typename TContainer::TIterator;
+ }
+ using TIterator = typename TContainer::TIterator;
  template <typename T,typename Tcontainer>
  Queue<T,Tcontainer>::Queue()
  {

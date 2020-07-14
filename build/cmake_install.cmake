@@ -1,4 +1,4 @@
-# Install script for directory: /home/iacob/practica/practica/ex1
+# Install script for directory: /home/anca/.ssh/practica
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/iacob/practica/practica/ex1/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/anca/.ssh/practica/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

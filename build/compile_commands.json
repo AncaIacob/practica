@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/home/iacob/practica/practica/ex1/build",
-  "command": "/usr/bin/c++    -g   -o CMakeFiles/ex1.dir/Main.cpp.o -c /home/iacob/practica/practica/ex1/Main.cpp",
-  "file": "/home/iacob/practica/practica/ex1/Main.cpp"
+  "directory": "/home/anca/.ssh/practica/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/ex1.dir/Main.cpp.o -c /home/anca/.ssh/practica/Main.cpp",
+  "file": "/home/anca/.ssh/practica/Main.cpp"
 }
 ]
