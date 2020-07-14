@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/ex1.dir/Main.cpp.o  -o ex1 
