@@ -1,3 +1,5 @@
+#ifndef TASK_HPP
+#define TASK_HPP
 #include <cstddef>
 #include <cstdlib>
 #include <string>
@@ -15,4 +17,5 @@ private:
     std::string m_description;
     int8_t m_priority;
 };
+#endif 
 #include "Task.tpp"

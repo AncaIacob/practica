@@ -1,13 +1,18 @@
+#ifndef LIST_HPP
+#define LIST_HPP
 #include <cstddef>
 #include "ListNode.hpp"
 template<typename T>
  class List 
  {
-     public:
-      List();
-      List(const ListNode& rhs);
-      ~List();
-    std:: size_t getSize();
+   public:
+   List();
+   List(const ListNode& rhs);
+  ~List();
+     List<T>&operator=(const List& rhs);
+     const T& operator[](std::size_t idx) const;
+    T& operator[](std::size_t idx);
+     std:: size_t getSize();
     void insert(std::size_t idx , T element);
     void pushFront(T element);
     void pushBack(T element);
@@ -22,6 +27,8 @@ template<typename T>
     void setBack(T element);
     void clear();
     bool empty();
+     template<typename U>
+    friend std::ostream& operator<<(std::ostream& os, const List<U>& vec);
 
     private:
     size_t m_size;
@@ -30,4 +37,6 @@ template<typename T>
 
 
  };
+ #endif
  #include "List.tpp"
+ 

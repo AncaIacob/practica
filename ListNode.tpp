@@ -27,6 +27,15 @@ ListNode<T>::~ListNode()
      }
 }
 template <typename T>
+ListNode<T>& ListNode<T>::operator=(const ListNode& rhs)
+{
+     m_data = rhs.m_data;
+     m_next = rhs.m_next;
+     m_prev = rhs.m_prev;
+
+     return *this;
+}
+template <typename T>
 T& getPrev()
 {
     return this-> m_prev;
@@ -58,4 +67,12 @@ void ListNode<T>::setData(T data)
    this->m_data=data->m_data;
    this->m_next=data->m_next;
    this->m_prev=data->m_prev;
+}
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const ListNode<U>& vec)
+{
+    os << "prev: "<< ((ln.m_prev != NULL) ?  std::to_string(ln.m_prev->m_data) : "NULL") << "\n";  
+    os << "data: " << ln.m_data << "\n"; 
+    os << "next: "<< ((ln.m_next != NULL) ?  std::to_string(ln.m_next->m_data) : "NULL") << "\n";
+   return os;
 }
