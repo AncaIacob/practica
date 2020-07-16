@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/ex1.dir/Main.cpp.o  -o ex1 
+/usr/bin/c++  -g   CMakeFiles/ex1.dir/Main.cpp.o  -o ex1 

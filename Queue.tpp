@@ -1,123 +1,83 @@
-#include<iostream>
-#include <cstdlib>
-#include<iostream>
-#include "Queue.hpp"
- template <typename T, template <typename> typename Tcontainer>
- Queue<T,Tcontainer>::Queue()
- {
-     m_container=0;
- }
- template <typename T,template <typename> typename Tcontainer>
- Queue<T,Tcontainer>::Queue(const Queue&rhs)
- {
-     m_container=rhs.m_container;
- }
-  template <typename T,template <typename> typename Tcontainer>
- Queue<T,Tcontainer>::~Queue()
- {
-     delete []this->m_container;
- }
-  template <typename T, template <typename> typename TContainer>
+#include "Queue.hpp" 
+#include <iostream>
+
+template <typename T, template <typename> typename TContainer>
+Queue<T,TContainer>::Queue()
+{
+    
+}
+
+template <typename T, template <typename> typename TContainer>
+Queue<T,TContainer>::Queue(const Queue& rhs)
+{
+    m_container = rhs.m_container;
+}
+
+template <typename T, template <typename> typename TContainer>
+Queue<T,TContainer>::~Queue()
+{
+    
+}
+
+template <typename T, template <typename> typename TContainer>
 Queue<T,TContainer>& Queue<T,TContainer>::operator=(const Queue& rhs)
 {
     m_container = rhs.m_container;
 }
+
 template <typename U, template <typename> typename UTContainer>
-std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& myq)
+std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& q)
 {
-    os << myq.m_container;
+    os << q.m_container;
     return os;
 }
- template <typename T,template <typename> typename Tcontainer>
- size_t getSize()
- {
-   return m_container.getSize();
 
- }
- template <typename T,template <typename> typename Tcontainer>
- void Queue<T,Tcontainer>::push(T element)
- {
-    m_container.pushBack(element);
- }
- template <typename T,template <typename> typename Tcontainer>
- void Queue<T,Tcontainer>::pop(T element)
- {
-      T value = m_container.getFront();
-      m_container.popFront();
-      return val;
- }
-template <typename T,template <typename> typename Tcontainer>
- void Queue<T,Tcontainer>::clear()
- {
-   m_container.clear();
- }
- template <typename T,template <typename> typename Tcontainer>
- bool Queue<T,Tcontainer>::empty()
- {
-    returnh m_container.empty();
- }
- using TIterator = typename TContainer::TIterator;
- template <typename T,typename Tcontainer>
- Queue<T,Tcontainer>::Queue()
- {
-     m_container=0;
- }
- template <typename T,typename Tcontainer>
- Queue<T,Tcontainer>::Queue(const Queue&rhs)
- {
-     m_container=rhs.m_container;
- }
-  template <typename T,typename Tcontainer>
- Queque<T,Tcontainer>::~Queque()
- {
-     delete []this->m_container;
- }
- template <typename T,typename TContainer>
-Queue<T,TContainer>& Queue<T,TContainer>::operator=(const Queue& rhs)
+template <typename T, template <typename> typename TContainer>
+size_t Queue<T,TContainer>::getSize()
 {
-    m_container = rhs.m_container;
+    return m_container.getSize();
 }
-template <typename U, template <typename> typename UTContainer>
-std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& myq)
-{
-    os << myq.m_container;
-    return os;
-}
- template <typename T,typename Tcontainer>
- size_t getSize()
- {
-   return m_container.getSize();
 
- }
- template <typename T, typename Tcontainer>
- void Queue<T,Tcontainer>::push(T element)
- {
-    m_container.pushBack(element);
- }
- template <typename T,typename Tcontainer>
- void Queue<T,Tcontainer>::pop(T element)
- {
-      T value = m_container.getFront();
-      m_container.popFront();
-      return value;
- }
-template <typename T, typename Tcontainer>
- void Queue<T,Tcontainer>::clear()
- {
-   m_size=0;
- }
- template <typename T,typename Tcontainer>
- bool Queue<T,Tcontainer>::isEmpty()
- {
+template <typename T, template <typename> typename TContainer>
+void Queue<T,TContainer>::push(T element)
+{
+    m_container.pushFront(element);
+}
+
+template <typename T, template <typename> typename TContainer>
+T Queue<T,TContainer>::pop()
+{
+    T val = m_container.getBack();
+    m_container.popBack();
+    return val;
+}
+
+template <typename T, template <typename> typename TContainer>
+void Queue<T,TContainer>::clear()
+{
+    m_container.clear();
+}
+
+template <typename T, template <typename> typename TContainer>
+bool Queue<T,TContainer>::empty()
+{
     return m_container.empty();
- }
-template <typename T,typename TContainer>
-TIterator begin()
-{
-  return TIterator<T>(m_data)
 }
-template <typename T,typename TContainer>
-TIterator end()
+
+template <typename T, template <typename> typename TContainer>
+void Queue<T,TContainer>::print()
 {
-return TIterator<T>(m_data+m_size);
+    m_container.print();
+}
+
+template <typename T, template <typename> typename TContainer>
+typename TContainer<T>::TIterator Queue<T,TContainer>::begin()
+{
+    return m_container.begin();
+}
+
+template <typename T, template <typename> typename TContainer>
+typename TContainer<T>::TIterator Queue<T,TContainer>::end()
+{
+    return m_container.end();
 }
