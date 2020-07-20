@@ -1,5 +1,6 @@
 #include "PriorityQueue.hpp" 
-#include <iostream>
+#include<iostream>
+#include "Vector.hpp"
 
 template <typename T,template <typename>  typename TContainer>
 PriorityQueue<T,TContainer>::PriorityQueue()

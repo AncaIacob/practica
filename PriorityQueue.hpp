@@ -2,7 +2,7 @@
 #define PRIORITYQUEUE_HPP
 #include <iostream> 
 #include <cstddef>
-
+#include "Vector.hpp"
 template <typename T, template <typename> typename TContainer>
 class PriorityQueue
 {
