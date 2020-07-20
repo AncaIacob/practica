@@ -1,24 +1,32 @@
-#ifndef PriorityQueue_HPP
-#define PriorityQueue_HPP
+#ifndef PRIORITYQUEUE_HPP
+#define PRIORITYQUEUE_HPP
+#include <iostream> 
 #include <cstddef>
-#include<iostream>
+
 template <typename T, template <typename> typename TContainer>
 class PriorityQueue
 {
-    public:
+public:
     PriorityQueue();
     PriorityQueue(const PriorityQueue& rhs);
     ~PriorityQueue();
     PriorityQueue<T,TContainer>& operator=(const PriorityQueue& rhs);
     size_t getSize();
     void push(T element);
-    T pop(T element);
+    T pop();
     void clear();
     bool empty();
-    friend std::ostream& operator<<(std::ostream& os, const PriorityQueue<U,UTContainer>& prioq);
-    
-    private:
-    TContainer m_container;
+    template <typename U, template <typename> typename UTContainer>
+    friend std::ostream& operator<<(std::ostream& os, const PriorityQueue<U,UTContainer>& pq);
+     typename TContainer<T>::TIterator begin();
+    typename TContainer<T>::TIterator end();
+
+private:
+
+     TContainer<T> m_container;
+    void print();
 };
-#include"PriorityQueue.hpp"
+
+
+#include "PriorityQueue.tpp"
 #endif
