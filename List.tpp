@@ -63,7 +63,7 @@ T& List<T>::operator[](std::size_t idx)
         --idx;
     }
 
-    return p->getData(); //facut sa returneze referinta
+    return p->getData(); 
 }
 
 template <typename T>
@@ -224,7 +224,7 @@ void List<T>::erase(size_t idx)
         --idx;
     }
 
-    // p->getPrev()->setNext(p->getNext()); --facut in destructor
+    // p->getPrev()->setNext(p->getNext()); 
     // p->getNext()->setPrev(p->getPrev());
     delete p;
     --m_size;

@@ -129,7 +129,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ex1
+CMAKE_PROJECT_NAME:STATIC=practica
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -185,6 +185,12 @@ ex1_BINARY_DIR:STATIC=/home/anca/.ssh/practica/build
 
 //Value Computed by CMake
 ex1_SOURCE_DIR:STATIC=/home/anca/.ssh/practica
+
+//Value Computed by CMake
+practica_BINARY_DIR:STATIC=/home/anca/.ssh/practica/build
+
+//Value Computed by CMake
+practica_SOURCE_DIR:STATIC=/home/anca/.ssh/practica
 
 
 ########################

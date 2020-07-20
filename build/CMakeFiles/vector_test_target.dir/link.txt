@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/vector_test_target.dir/VectorTest.cpp.o  -o vector_test_target -fprofile-instr-generate -fcoverage-mapping 

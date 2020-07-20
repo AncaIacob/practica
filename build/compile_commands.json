@@ -1,7 +1,12 @@
 [
 {
   "directory": "/home/anca/.ssh/practica/build",
-  "command": "/usr/bin/c++   -I/home/anca/.ssh/practica/include  -g   -o CMakeFiles/ex1.dir/Main.cpp.o -c /home/anca/.ssh/practica/Main.cpp",
+  "command": "/usr/bin/c++   -I/home/anca/.ssh/practica/include  -g   -o CMakeFiles/practica.dir/Main.cpp.o -c /home/anca/.ssh/practica/Main.cpp",
   "file": "/home/anca/.ssh/practica/Main.cpp"
+},
+{
+  "directory": "/home/anca/.ssh/practica/build",
+  "command": "/usr/bin/c++   -I/home/anca/.ssh/practica/include  -g   -fprofile-instr-generate -fcoverage-mapping -o CMakeFiles/vector_test_target.dir/VectorTest.cpp.o -c /home/anca/.ssh/practica/VectorTest.cpp",
+  "file": "/home/anca/.ssh/practica/VectorTest.cpp"
 }
 ]

@@ -67,6 +67,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -111,17 +122,69 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ex1
+# Target rules for targets named format
 
 # Build rule for target.
-ex1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ex1
-.PHONY : ex1
+format: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 format
+.PHONY : format
 
 # fast build rule for target.
-ex1/fast:
-	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/build
-.PHONY : ex1/fast
+format/fast:
+	$(MAKE) -f CMakeFiles/format.dir/build.make CMakeFiles/format.dir/build
+.PHONY : format/fast
+
+#=============================================================================
+# Target rules for targets named practica
+
+# Build rule for target.
+practica: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 practica
+.PHONY : practica
+
+# fast build rule for target.
+practica/fast:
+	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/build
+.PHONY : practica/fast
+
+#=============================================================================
+# Target rules for targets named vector_test_target
+
+# Build rule for target.
+vector_test_target: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vector_test_target
+.PHONY : vector_test_target
+
+# fast build rule for target.
+vector_test_target/fast:
+	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/build
+.PHONY : vector_test_target/fast
+
+#=============================================================================
+# Target rules for targets named generate_coverage
+
+# Build rule for target.
+generate_coverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 generate_coverage
+.PHONY : generate_coverage
+
+# fast build rule for target.
+generate_coverage/fast:
+	$(MAKE) -f CMakeFiles/generate_coverage.dir/build.make CMakeFiles/generate_coverage.dir/build
+.PHONY : generate_coverage/fast
+
+#=============================================================================
+# Target rules for targets named run_tests
+
+# Build rule for target.
+run_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 run_tests
+.PHONY : run_tests
+
+# fast build rule for target.
+run_tests/fast:
+	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
+.PHONY : run_tests/fast
 
 Main.o: Main.cpp.o
 
@@ -129,7 +192,7 @@ Main.o: Main.cpp.o
 
 # target to build an object file
 Main.cpp.o:
-	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/Main.cpp.o
+	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/Main.cpp.o
 .PHONY : Main.cpp.o
 
 Main.i: Main.cpp.i
@@ -138,7 +201,7 @@ Main.i: Main.cpp.i
 
 # target to preprocess a source file
 Main.cpp.i:
-	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/Main.cpp.i
+	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/Main.cpp.i
 .PHONY : Main.cpp.i
 
 Main.s: Main.cpp.s
@@ -147,8 +210,35 @@ Main.s: Main.cpp.s
 
 # target to generate assembly for a file
 Main.cpp.s:
-	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/Main.cpp.s
+	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/Main.cpp.s
 .PHONY : Main.cpp.s
+
+VectorTest.o: VectorTest.cpp.o
+
+.PHONY : VectorTest.o
+
+# target to build an object file
+VectorTest.cpp.o:
+	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/VectorTest.cpp.o
+.PHONY : VectorTest.cpp.o
+
+VectorTest.i: VectorTest.cpp.i
+
+.PHONY : VectorTest.i
+
+# target to preprocess a source file
+VectorTest.cpp.i:
+	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/VectorTest.cpp.i
+.PHONY : VectorTest.cpp.i
+
+VectorTest.s: VectorTest.cpp.s
+
+.PHONY : VectorTest.s
+
+# target to generate assembly for a file
+VectorTest.cpp.s:
+	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/VectorTest.cpp.s
+.PHONY : VectorTest.cpp.s
 
 # Help Target
 help:
@@ -157,11 +247,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... ex1"
+	@echo "... format"
+	@echo "... practica"
+	@echo "... vector_test_target"
+	@echo "... generate_coverage"
+	@echo "... test"
 	@echo "... edit_cache"
+	@echo "... run_tests"
 	@echo "... Main.o"
 	@echo "... Main.i"
 	@echo "... Main.s"
+	@echo "... VectorTest.o"
+	@echo "... VectorTest.i"
+	@echo "... VectorTest.s"
 .PHONY : help
 
 
