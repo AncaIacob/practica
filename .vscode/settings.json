@@ -4,5 +4,6 @@
         "cstddef": "cpp",
         "*.tpp": "cpp",
         "iostream": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
