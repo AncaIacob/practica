@@ -19,6 +19,9 @@ public:
     ListIterator& operator+=(std::size_t difference);
     ListIterator& operator-=(std::size_t difference);
 
+    ListIterator operator+(std::size_t difference);
+    ListIterator operator-(std::size_t difference);
+
     T& operator*();
 
 
@@ -28,4 +31,4 @@ private:
 };
 
 #include "ListIterator.tpp"
-#endif //LISTERATOR_HPP
+#endif

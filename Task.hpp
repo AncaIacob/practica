@@ -1,21 +1,27 @@
 #ifndef TASK_HPP
 #define TASK_HPP
-#include <cstddef>
-#include <cstdlib>
-#include <string>
+
+#include <cstdint>
+#include <ostream>
+#include <functional>
+
+#include "TaskArgument.hpp"
+#include "TaskResult.hpp"
+
 class Task{
 public:
-    Task();
 
-    std::string getDescription();
-    int8_t getPriority();
+    Task(int64_t prio, std::function<TaskResult(TaskArgument)> func);
 
+    TaskResult operator()(TaskArgument arg);
     bool operator<(const Task& rhs);
+
     friend std::ostream& operator<<(std::ostream& os, const Task& t);
 
 private:
-    std::string m_description;
-    int8_t m_priority;
+    int64_t m_priority;
+    std::function<TaskResult(TaskArgument)> m_function;
+    int64_t getPriority();
 };
-#endif 
 #include "Task.tpp"
+#endif 

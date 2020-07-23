@@ -1,36 +1,57 @@
- #include "Vector.hpp"
-#include <cstdlib>
-constexpr std::size_t INITIAL_CAPACITY = 15;
- template <typename T>
+#include "Vector.hpp" 
+#include <iostream>
+#include <string.h>
+constexpr std::size_t INITIAL_CAPACITY = 10;
 
-template< typename T>
- Vector<T>::Vector()
+template <typename T>
+Vector<T>::Vector()
 {
-   m_capacity=INITIAL_CAPACITY;
-   m_size=0;
-   m_data=new T[INITIAL_CAPACITY];
-};
-
- template <typename T>
-Vector<T>::Vector(const Vector &rhs)
-{
-  m_size = rhs.m_size;
-  m_capacity = rhs.m_capacity; 
- m_data = new T[m_capacity]; 
- for(size_t i=0; i<this->m_size;++i)
- {
-     m_data[idx]=rhs.m_data[idx];
- }
+    m_capacity = INITIAL_CAPACITY; //sa nu se apeleze de mai multe ori reserve
+    m_size = 0;
+    m_data = new T[INITIAL_CAPACITY];
+    std::cout << "Vector Ctor" << std::endl;
 }
 
- template <typename T>
- Vector<T>::~Vector()
- { 
-     delete[] m_data;
-     m_data=nullptr;
- }
+template <typename T>
+Vector<T>::Vector(const Vector& rhs) 
+{ 
+    m_size = rhs.m_size;
+    m_capacity = rhs.m_capacity; 
+    delete[] m_data;
+    m_data = new T[m_capacity]; 
+    std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_data);
+    std::cout << "Vector Copy Ctor" << std::endl;
+} 
 
-  template <typename T>
+template<typename T>
+Vector<T>::Vector(Vector&& rhs)
+{
+    m_data = rhs.m_data;
+    rhs.m_data = nullptr;
+    std::cout << "Vector Move Ctor" << std::endl;
+}
+
+template <typename T>
+Vector<T>::~Vector() 
+{ 
+    delete[] this->m_data; 
+    m_data = nullptr;
+    std::cout << "Vector Dtor" << std::endl;
+}
+
+template <typename T>
+const T& Vector<T>::operator[](std::size_t idx) const
+{
+    return m_data[idx];
+}
+
+template <typename T>
+T& Vector<T>::operator[](std::size_t idx)
+{
+    return m_data[idx];
+}
+
+template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector& rhs)
 {
     if(m_capacity < rhs.m_capacity)
@@ -39,69 +60,28 @@ Vector<T>& Vector<T>::operator=(const Vector& rhs)
         m_data = new T[rhs.m_capacity];
     }
     m_capacity = rhs.m_capacity;
-    for(size_t i=0; i<this->m_size;++i)
-     {
-     m_data[idx]=rhs.m_data[idx];
-     }
+    std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_capacity * sizeof(T));
 
     return *this;
 }
 
 template <typename T>
- size_t Vector<T>:: getSize()
+Vector<T>& Vector<T>::operator=(Vector&& rhs)
 {
-    return this->m_size;
 
+    m_capacity = rhs.m_capacity;
+    m_size = rhs.m_size;
+    m_data = rhs.m_data;
+
+    rhs.m_data = nullptr;
+    rhs.m_capacity = rhs.m_size = 0;
+    
+    std::cout << "Data Move Assignment Op" << std::endl;
+    
+    return *this;
 }
-template< typename T>
-size_t Vector<T>:: getCapacity()
-{
-    return this->m_capacity;
 
-}
-
-template <typename T>
- void Vector<T>:: insert( size_t idx, T element){
-      if(m_size==m_capacity)
-     {
-         reserve((1+m_capacity)*2);
-     }
-     if(idx >= 0 && idx <= this->m_size){
-        for(size_t i = idx; i < this->m_size - 1; ++i)
-        {
-            this->m_data[i+1] = this->m_data[i];
-           
-        }
-     this->m_size++;
-     this->m_data[idx]=element;
- }
- }
-
- template<typename T>
- T& Vector<T>::operator[](size_t idx) const
- {
-     return m_data[idx];
- }
-
- template <typename T>
- T& Vector<T>:: getFront()
- {
-  return this->m_data[0];
- }
-
- template <typename T>
-  T& Vector<T>:: getBack()
- {
-   return this->m_data[this->m_size-1];
- }
-
-  template <typename T>
- T& Vector<T>::operator[]( size_t idx)
- {
-     this->m_data[idx];
- }
-
- template<typename U>
+template<typename U>
 std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
 {
    for(std::size_t idx = 0; idx < vec.m_size; ++idx)
@@ -113,82 +93,157 @@ std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
    return os;
 }
 
-  template <typename T>
- int Vector<T>::pushFront(T element)
- {
-     insert(0,element);
- }
 
-  template <typename T>
- int Vector<T>::pushBack(T element)
- {
-     if(m_size == m_capacity)
+template <typename T>
+size_t Vector<T>::getSize()
+{
+    return this->m_size;
+}
+
+template <typename T>
+size_t Vector<T>::getCapacity()
+{
+    return this->m_capacity;
+}
+
+template <typename T>
+ void Vector<T>:: insert( TIterator ipos, T element){
+      if(m_size==m_capacity)
      {
          reserve((1+m_capacity)*2);
      }
-     m_data[m_size]=element;
-     m_size++;
- }
- 
-  template <typename T>
- void Vector<T>:: reserve(std::size_t newCapacity)
- {
-     if(this->m_capacity<newCapacity)
-     {
-         T* newData= new int [newCapacity];
-         this->m_capacity=newCapacity;
-         for(size_t i=0;i<this->m_size;++i)
-         {
-             newData[i]=this->m_data[i];
-         }
-         delete [] this->m_data;
-         this->m_data=newData;
-     }
- }
- void Vector<T>:: resize( size_t newSize)
- {
-     if(this->m_size<newSize)
-     {
-         T* newData= new int [newSize];
-         this->m_size=newSize;
-         for(size_t i=0;i<this->m_size;++i)
-         {
-             newData[i]=this->m_data[i];
-         }
-         delete [] this->m_data;
-         this->m_data=newData;
-     }
- }
 
-  template <typename T>
- void Vector<T>::clear()
- {
-   m_size=0;
- }
-  
-  template <typename T>
- bool Vector<T>::isEmpty()
-{
-   return m_size=0;
-}
- 
- template <typename T>
- void Vector<T>::erase(size_t idx)
- {
-     for (std::size_t idx = pos; idx < m_size - 1; ++idx)
+      VectorIterator end = end();
+      --end;
+      for (VectorIterator current = ipos; current != end; ++current)
     {
-        m_data[idx] = m_data[idx + 1];
+        VectorIterator  element = current ;
+        ++element;     
     }
+      
+     this->m_size++;
+     this->m_data[ipos]=element;
+ }
+ }
 
-    --m_size;
- }
- template<typename T>
- VectorIterator<T> Vector<T>::begin()
+template <typename T>
+void Vector<T>::pushFront(T element)
+{
+    insert(0,element);
+}
+
+template <typename T>
+void Vector<T>::pushBack(T element)
+{
+    insert(m_size, element);
+}
+
+template <typename T>
+ void Vector<T>::erase(VectorIterator pos)
  {
-     return VectorIterator<T>(m_data);
+     VectorIterator end = end();
+      --end;
+
+    for (VectorIterator current = pos; current != end; ++current)
+    {
+        VectorIterator next = current;
+        ++next;
+
+        current = next;        
+    }
  }
- template<typename T>
- VectorIterator<T> Vector<T>::end()
- {
-     return VectorIterator<T>(m_data+m_size);
- }
+
+template <typename T>
+void Vector<T>::popFront()
+{
+    erase(0);
+}
+
+template <typename T>
+void Vector<T>::popBack()
+{
+    erase(m_size);
+}
+
+template <typename T>
+T Vector<T>::getFront()
+{
+    return this->m_data[0];
+}
+
+template <typename T>
+T Vector<T>::getBack()
+{
+    return this->m_data[this->m_size-1];
+}
+
+template <typename T>
+void Vector<T>::setFront(T element)
+{
+    this->m_data[0] = element;
+}
+
+template <typename T>
+void Vector<T>::setBack(T element)
+{
+    this->m_data[this->m_size] = element;
+}
+
+template <typename T>
+void Vector<T>::clear()
+{
+    m_size = 0;
+}
+
+template <typename T>
+bool Vector<T>::empty()
+{
+    return m_size == 0;
+}
+
+template <typename T>
+void Vector<T>::reserve(size_t newCapacity)
+{
+    if(this->m_capacity < newCapacity)
+    {
+        T* newData = new T[newCapacity]; 
+        this->m_capacity = newCapacity;
+
+        for(size_t i = 0; i < this->m_size; ++i){
+            newData[i] = this->m_data[i];
+        }
+
+        delete[] this->m_data; 
+        this->m_data = newData;
+    }
+}
+
+template <typename T>
+void Vector<T>::resize(std::size_t newSize)
+{
+    if(newSize < 0) return;
+    if(newSize <= m_capacity)
+    {
+        for(std::size_t idx = m_size; idx < newSize; ++idx)
+        {
+            m_data[idx] = T();
+        }
+
+    }else
+    {
+        reserve((m_capacity + 1) * 2);
+    }
+    m_size = newSize;
+}
+
+template <typename T>
+VectorIterator<T> Vector<T>::begin()
+{
+    return Iterator(m_data);
+}
+
+template <typename T>
+VectorIterator<T> Vector<T>::end()
+{
+    return VectorIterator<T>(m_data + m_size);
+}

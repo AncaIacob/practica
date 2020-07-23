@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anca/.ssh/practica/Vector.hpp
+cstddef
+-
+cstdlib
+-
+Vector.tpp
+/home/anca/.ssh/practica/Vector.tpp
+
+/home/anca/.ssh/practica/Vector.tpp
+Vector.hpp
+/home/anca/.ssh/practica/Vector.hpp
+cstdlib
+-
+
+/home/anca/.ssh/practica/VectorTest.cpp
+Vector.hpp
+/home/anca/.ssh/practica/Vector.hpp
+cassert
+-
+

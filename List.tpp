@@ -1,3 +1,4 @@
+  
 #include "List.hpp" 
 #include <iostream>
 
@@ -7,6 +8,8 @@ List<T>::List()
     m_size = 0;
     m_head = NULL;
     m_tail = NULL;
+
+    std::cout << "List Ctor" << std::endl;
 }
 
 template <typename T>
@@ -23,6 +26,23 @@ List<T>::List(const List& rhs)
        ++m_size;
        p = p->getNext();
    }
+
+   std::cout << "List Copy Ctor" << std::endl;
+}
+
+template <typename T>
+List<T>::List(List&& rhs)
+{
+    m_size = rhs.m_size;
+    rhs.m_size = 0;
+
+    m_head = rhs.m_head;
+    rhs.m_head = nullptr;
+
+    m_tail = rhs.m_tail;
+    rhs.m_tail = nullptr;
+
+    std::cout << "List Move Ctor" << std::endl;
 }
 
 template <typename T>
@@ -38,6 +58,8 @@ List<T>::~List()
     }
     m_head = NULL;
     m_tail = NULL;
+
+    std::cout << "List Dtor" << std::endl;
 }
 
 template <typename T>
@@ -69,19 +91,44 @@ T& List<T>::operator[](std::size_t idx)
 template <typename T>
 List<T>& List<T>::operator=(const List& rhs)
 {
+    while(m_head != NULL)
+    {
+        popFront(); 
+    }
     m_size = 0;
     m_head = NULL;
     m_tail = NULL;
 
-   ListNode<T>*p = rhs.m_head;
-   while(p != NULL)
-   {
+    ListNode<T>*p = rhs.m_head;
+    while(p != NULL)
+    {
        pushBack(p->getData());
        ++m_size;
        p = p->getNext();
-   }
+    }
+    std::cout << "List Copy Assignment Op" << std::endl;
+    return *this;
+}
 
-     return *this;
+template <typename T>
+List<T>& List<T>::operator=(List&& rhs)
+{
+    while(m_head != NULL)
+    {
+        popFront(); 
+    }
+
+    m_size = rhs.m_size;
+    rhs.m_size = 0;
+
+    m_head = rhs.m_head;
+    rhs.m_head = NULL;
+
+    m_tail = rhs.m_tail;
+    rhs.m_tail = NULL;
+
+    std::cout << "List Move Assignment Op" << std::endl;
+    return *this;
 }
 
 template<typename U>
@@ -224,7 +271,7 @@ void List<T>::erase(size_t idx)
         --idx;
     }
 
-    // p->getPrev()->setNext(p->getNext()); 
+    // p->getPrev()->setNext(p->getNext()); --facut in destructor
     // p->getNext()->setPrev(p->getPrev());
     delete p;
     --m_size;
@@ -322,4 +369,3 @@ ListIterator<T> List<T>::end()
 {
     return ListIterator<T>(m_tail);
 }
-

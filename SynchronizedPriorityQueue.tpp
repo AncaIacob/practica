@@ -8,8 +8,10 @@ SynchronizedPriorityQueue<T,TContainer,TLock>::SynchronizedPriorityQueue()
 
 template <typename T, template <typename> typename TContainer, typename TLock>
 SynchronizedPriorityQueue<T,TContainer,TLock>::SynchronizedPriorityQueue(const SynchronizedPriorityQueue& rhs)
-{
+{  
+    m_lock.lock();
     m_container = rhs.m_container;
+    m_lock.unlock();
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
@@ -74,7 +76,7 @@ template <typename T, template <typename> typename TContainer, typename TLock>
 void SynchronizedPriorityQueue<T,TContainer,TLock>::clear()
 {
     m_lock.lock();
-    m_container.clear();
+    m_container=0;
     m_lock.unlock();
 }
 
@@ -104,4 +106,5 @@ typename TContainer<T>::TIterator SynchronizedPriorityQueue<T,TContainer,TLock>:
     typename TContainer<T>::TIterator it = m_container.end();
     m_lock.unlock();
     return it;
+    
 }
