@@ -95,15 +95,15 @@ size_t Vector<T>::getCapacity()
 template <typename T>
 void Vector<T>::insert(Vector::TIterator pos, T element)
 {
-    if(this->m_capacity <= this->m_size) 
+    if(m_capacity <= m_size) 
     {
         reserve((1 + m_capacity) * 2);
     }
 
-    if(pos >= 0 && pos <= this->m_size){
-        for(size_t i = pos; i < this->m_size - 1; ++i)
+    if(pos >= 0 && pos <= m_size){
+        for(TIterator i = pos; i < m_size - 1; ++i)
         {
-            this->m_data[i+1] = this->m_data[i]; 
+            m_data[i+1] = m_data[i]; 
         }
          this->m_size++;
          this->m_data[pos] = element;
