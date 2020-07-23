@@ -1,6 +1,5 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
-
 #include <cstddef>
 #include <ostream>
 #include "VectorIterator.hpp"
@@ -8,9 +7,9 @@
 
 template <typename T>
 class Vector{
-    using Iterator = VectorIterator<T>;
+    
 public:
-
+    using TIterator = VectorIterator<T>;
     Vector();
     Vector(const Vector& rhs);
     Vector(Vector&& rhs);
@@ -22,11 +21,11 @@ public:
     std::size_t getSize();
     std::size_t getCapacity();
 
-     void insert(TIterator ipos, T element);
+    void insert(TIterator pos, T element);
     void pushFront(T element);
     void pushBack(T element);
     
-    void erase(VectorIterator pos);
+    void erase(size_t idx);
     void popFront();
     void popBack();
 

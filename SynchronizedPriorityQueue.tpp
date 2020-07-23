@@ -47,7 +47,6 @@ size_t SynchronizedPriorityQueue<T,TContainer, TLock>::getSize()
 template <typename T, template <typename> typename TContainer, typename TLock>
 void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T task)
 {
-    m_container.pushFront(element);
 
     std::size_t pos = 0;
     m_lock.lock();
@@ -76,7 +75,7 @@ template <typename T, template <typename> typename TContainer, typename TLock>
 void SynchronizedPriorityQueue<T,TContainer,TLock>::clear()
 {
     m_lock.lock();
-    m_container=0;
+    m_container.clear();
     m_lock.unlock();
 }
 
