@@ -114,7 +114,7 @@ template <typename T>
      }
 
       VectorIterator end = end();
-      --end;
+      
       for (VectorIterator current = ipos; current != end; ++current)
     {
         VectorIterator  element = current ;
@@ -142,7 +142,7 @@ template <typename T>
  void Vector<T>::erase(VectorIterator pos)
  {
      VectorIterator end = end();
-      --end;
+      
 
     for (VectorIterator current = pos; current != end; ++current)
     {
