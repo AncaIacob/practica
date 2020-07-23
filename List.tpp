@@ -1,4 +1,3 @@
-  
 #include "List.hpp" 
 #include <iostream>
 
@@ -9,7 +8,6 @@ List<T>::List()
     m_head = NULL;
     m_tail = NULL;
 
-    std::cout << "List Ctor" << std::endl;
 }
 
 template <typename T>
@@ -27,7 +25,7 @@ List<T>::List(const List& rhs)
        p = p->getNext();
    }
 
-   std::cout << "List Copy Ctor" << std::endl;
+   
 }
 
 template <typename T>
@@ -42,7 +40,7 @@ List<T>::List(List&& rhs)
     m_tail = rhs.m_tail;
     rhs.m_tail = nullptr;
 
-    std::cout << "List Move Ctor" << std::endl;
+
 }
 
 template <typename T>
@@ -59,7 +57,7 @@ List<T>::~List()
     m_head = NULL;
     m_tail = NULL;
 
-    std::cout << "List Dtor" << std::endl;
+    
 }
 
 template <typename T>
@@ -106,30 +104,10 @@ List<T>& List<T>::operator=(const List& rhs)
        ++m_size;
        p = p->getNext();
     }
-    std::cout << "List Copy Assignment Op" << std::endl;
+    
     return *this;
 }
 
-template <typename T>
-List<T>& List<T>::operator=(List&& rhs)
-{
-    while(m_head != NULL)
-    {
-        popFront(); 
-    }
-
-    m_size = rhs.m_size;
-    rhs.m_size = 0;
-
-    m_head = rhs.m_head;
-    rhs.m_head = NULL;
-
-    m_tail = rhs.m_tail;
-    rhs.m_tail = NULL;
-
-    std::cout << "List Move Assignment Op" << std::endl;
-    return *this;
-}
 
 template<typename U>
 std::ostream& operator<<(std::ostream& os, const List<U>& ln)
