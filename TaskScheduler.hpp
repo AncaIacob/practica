@@ -18,7 +18,7 @@ public:
 
 
 private:
-    SynchronizedPriorityQueue<std::packaged_task<Task>> m_tasks;
+   SynchronizedPriorityQueue<std::packaged_task<Task>> m_tasks;
     Vector<std::thread> m_thread;
     std::atomic<bool> m_stop;
 
