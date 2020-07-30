@@ -106,7 +106,7 @@ size_t Vector<T>::getCapacity()
 }
 
 template <typename T>
-void Vector<T>::insert(Vector::TIterator pos, T element)
+void Vector<T>::insert(TIterator pos, T element)
 {
     if(m_capacity <= m_size) 
     {
@@ -136,13 +136,13 @@ void Vector<T>::pushBack(T element)
 }
 
 template <typename T>
- void Vector<T>::erase(size_t idx)
+ void Vector<T>::erase(TIterator pos)
  {
-     if(idx >= 0 && idx <= m_size){
-        for(size_t i = idx; i < m_size - 1; ++i){
-            m_data[i] = m_data[i + 1];
-        }
-    } m_size--;
+    for(TIterator idx = pos; idx != end()-1; ++idx)
+    {
+        *idx = *(idx+1);
+    }
+    --m_size;
  }
 
 template <typename T>

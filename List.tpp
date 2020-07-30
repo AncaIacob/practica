@@ -123,7 +123,7 @@ std::ostream& operator<<(std::ostream& os, const List<U>& ln)
 }
 
 template <typename T>
-void List<T>::insert(size_t idx, T element)
+void List<T>::insert(TIterator pos, T element)
 {
     if(idx < 0 || idx > m_size) return;
 
@@ -228,7 +228,7 @@ size_t List<T>::getSize()
 }
 
 template <typename T>
-void List<T>::erase(size_t idx)
+void List<T>::erase(TIterator pos)
 {
     if(idx < 0 || idx > m_size) return;
 
@@ -248,9 +248,6 @@ void List<T>::erase(size_t idx)
         p = p->getNext();
         --idx;
     }
-
-    // p->getPrev()->setNext(p->getNext()); --facut in destructor
-    // p->getNext()->setPrev(p->getPrev());
     delete p;
     --m_size;
 }

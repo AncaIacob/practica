@@ -1,7 +1,7 @@
 #include "Task.hpp" 
 #include <ostream>
 
-Task::Task(int64_t prio, std::function<TaskResult(TaskArgument)> func) 
+Task::Task(int64_t prio, std::function<TaskResult()> func) 
 {
     m_priority = prio;
     m_function = func;
@@ -21,9 +21,9 @@ bool Task::operator<(const Task& rhs)
     return false;
 }
 
-TaskResult Task::operator()(TaskArgument arg)
+TaskResult Task::operator()()
 {
-    return m_function(arg);
+    return m_function();
 }
 
 std::ostream& operator<<(std::ostream& os, const Task& t)
@@ -32,4 +32,10 @@ std::ostream& operator<<(std::ostream& os, const Task& t)
        << t.m_priority << "\n";
 
     return os;
+}
+
+
+std::function<TaskResult()> Task::get_m_function()
+{
+    return m_function;
 }

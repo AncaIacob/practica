@@ -1,11 +1,12 @@
 #ifndef LISTERATOR_HPP
 #define LISTERATOR_HPP
 #include <iostream>
+#include "ListNode.hpp"
 
 template <typename T>
 class ListIterator{
 public:
-    ListIterator(T* value);
+    ListIterator(ListNode<T>* value);
     ListIterator(const ListIterator& rhs);
 
     ListIterator& operator=(const ListIterator& rhs);
@@ -23,11 +24,12 @@ public:
     ListIterator operator-(std::size_t difference);
 
     T& operator*();
+    ListNode<T>* get_m_value();
 
 
 private:
 
-    T* m_value;
+  ListNode<T>* m_value();
 };
 
 #include "ListIterator.tpp"

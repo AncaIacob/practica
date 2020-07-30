@@ -1,6 +1,5 @@
 #ifndef LIST_HPP
 #define LIST_HPP
-
 #include <cstddef>
 #include <iostream>
 #include "ListNode.hpp"
@@ -20,11 +19,11 @@ public:
     
     std::size_t getSize();
 
-    void insert(std::size_t idx, T element);
+    void insert(TIterator pos, T element);
     void pushFront(T element);
     void pushBack(T element);
 
-    void erase(std::size_t idx);
+    void erase(TIterator pos);
     void popFront();
     void popBack();
     
