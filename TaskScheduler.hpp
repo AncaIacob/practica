@@ -13,7 +13,6 @@ class TaskScheduler
 public:
     TaskScheduler(std::size_t count);
     ~TaskScheduler();
-
     std::future<TaskResult> schedule(TaskArgument arg, std::int64_t prio);
     void stop();
 

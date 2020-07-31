@@ -45,7 +45,7 @@
             std::packaged_task<TaskResult(TaskArgument)> task;
             if (m_tasks.tryPop(task))
             {
-                task();
+                 task();
             }
         }
     }
