@@ -1,5 +1,4 @@
 #include "SynchronizedPriorityQueue.hpp"
-
 template <typename T, template <typename> typename TContainer, typename TLock>
 SynchronizedPriorityQueue<T,TContainer,TLock>::SynchronizedPriorityQueue()
 {
@@ -8,10 +7,8 @@ SynchronizedPriorityQueue<T,TContainer,TLock>::SynchronizedPriorityQueue()
 
 template <typename T, template <typename> typename TContainer, typename TLock>
 SynchronizedPriorityQueue<T,TContainer,TLock>::SynchronizedPriorityQueue(const SynchronizedPriorityQueue& rhs)
-{  
-    m_lock.lock();
+{
     m_container = rhs.m_container;
-    m_lock.unlock();
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
@@ -45,8 +42,26 @@ size_t SynchronizedPriorityQueue<T,TContainer, TLock>::getSize()
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
-void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T task)
+void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T& task)
 {
+    
+std::size_t pos = 0;
+    m_lock.lock();
+    for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
+    {
+        if (m_container.getElement() < task)
+        {
+            pos++;
+        }
+    }
+    m_container.insert(pos, task);
+    m_lock.unlock();
+}
+
+template <typename T, template <typename> typename TContainer, typename TLock>
+void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T&& task)
+{
+    
 
     std::size_t pos = 0;
     m_lock.lock();
@@ -57,7 +72,7 @@ void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T task)
             pos++;
         }
     }
-    m_container.insert(pos, task);
+    m_container.insert(pos, std::move(task));
     m_lock.unlock();
 }
 
@@ -72,6 +87,18 @@ T SynchronizedPriorityQueue<T,TContainer,TLock>::pop()
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
+bool SynchronizedPriorityQueue<T,TContainer,TLock>::tryPop(T& value)
+{
+    m_lock.lock();
+    if(!m_container.isEmpty())
+    {
+        value = m_container.pop();
+        return true;
+    }
+    return false;
+}
+
+template <typename T, template <typename> typename TContainer, typename TLock>
 void SynchronizedPriorityQueue<T,TContainer,TLock>::clear()
 {
     m_lock.lock();
@@ -82,6 +109,7 @@ void SynchronizedPriorityQueue<T,TContainer,TLock>::clear()
 template <typename T, template <typename> typename TContainer, typename TLock>
 bool SynchronizedPriorityQueue<T,TContainer,TLock>::empty()
 {   
+    
     m_lock.lock();
     bool emp = m_container.empty();
     m_lock.unlock();
@@ -105,5 +133,4 @@ typename TContainer<T>::TIterator SynchronizedPriorityQueue<T,TContainer,TLock>:
     typename TContainer<T>::TIterator it = m_container.end();
     m_lock.unlock();
     return it;
-    
 }

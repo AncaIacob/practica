@@ -1,11 +1,10 @@
-#ifndef SYNCHRONIZEDPRIORITYQUEUE_HPP
-#define SYNCHRONIZEDPRIORITYQUEUE_HPP
+#ifndef SPRIORITYQUEUE_HPP
+#define SPRIORITYQUEUE_HPP
 #include <cstddef>
 #include <iostream>
 #include <mutex>
-#include "Vector.hpp"
-
-template <typename T, template <typename> typename TContainer, typename TLock = std::mutex>
+#include "List.hpp"
+template <typename T, template <typename> typename TContainer = List, typename TLock = std::mutex>
 class SynchronizedPriorityQueue
 {
 public:
@@ -17,8 +16,11 @@ public:
 
     size_t getSize();
 
-    void push(T element);
+    void push(T& element);
+    void push(T&& element);
+    
     T pop();
+    bool tryPop(T& value);
 
     void clear();
     bool empty();
@@ -26,7 +28,7 @@ public:
     template <typename U, template <typename> typename UTContainer, typename UTLock>
     friend std::ostream& operator<<(std::ostream& os, const SynchronizedPriorityQueue<U,UTContainer, UTLock>& pq);
 
-    typename TContainer<T>::TIterator begin();
+    typename TContainer<T>::TIterator begin(); 
     typename TContainer<T>::TIterator end();
 
 private:
@@ -34,4 +36,6 @@ private:
     TContainer<T> m_container;
     TLock m_lock;
 };
+
+#include "SynchronizedPriorityQueue.hpp"
 #endif
