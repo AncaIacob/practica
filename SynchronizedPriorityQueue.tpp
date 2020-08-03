@@ -84,6 +84,7 @@ T SynchronizedPriorityQueue<T,TContainer,TLock>::pop()
     m_container.popBack();
     m_lock.unlock();
     return task;
+    
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>

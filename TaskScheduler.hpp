@@ -1,5 +1,6 @@
 #ifndef TASKSCHEDULER_HPP
 #define TASKSCHEDULER_HPP
+
 #include "SynchronizedPriorityQueue.hpp"
 #include "Task.hpp"
 #include "Vector.hpp"
@@ -26,4 +27,5 @@ private:
 };
 
 #include "TaskScheduler.tpp"
-#endif 
+
+#endif /* TASKSCHEDULER_HPP */

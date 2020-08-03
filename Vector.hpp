@@ -1,5 +1,6 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
+
 #include <cstddef>
 #include <ostream>
 #include "VectorIterator.hpp"
@@ -58,4 +59,5 @@ private:
 };
 
 #include "Vector.tpp"
-#endif 
+
+#endif /* VECTOR_HPP */

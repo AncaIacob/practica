@@ -1,5 +1,6 @@
-#ifndef SPRIORITYQUEUE_HPP
-#define SPRIORITYQUEUE_HPP
+#ifndef SYNCHRONIZEDPRIORITYQUEUE_HPP
+#define SYNCHRONIZEDPRIORITYQUEUE_HPP
+
 #include <cstddef>
 #include <iostream>
 #include <mutex>
@@ -28,7 +29,7 @@ public:
     template <typename U, template <typename> typename UTContainer, typename UTLock>
     friend std::ostream& operator<<(std::ostream& os, const SynchronizedPriorityQueue<U,UTContainer, UTLock>& pq);
 
-    typename TContainer<T>::TIterator begin(); 
+    typename TContainer<T>::TIterator begin();
     typename TContainer<T>::TIterator end();
 
 private:
@@ -38,4 +39,5 @@ private:
 };
 
 #include "SynchronizedPriorityQueue.hpp"
-#endif
+
+#endif /* SYNCHRONIZEDPRIORITYQUEUE_HPP */

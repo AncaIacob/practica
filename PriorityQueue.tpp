@@ -1,4 +1,4 @@
-#include "PriorityQueue.hpp" 
+#include "PriorityQueue.hpp"
 #include<iostream>
 #include "Vector.hpp"
 

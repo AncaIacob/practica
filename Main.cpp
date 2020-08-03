@@ -27,7 +27,7 @@ int main(){
   std::cout <<list;
   */
   
-  std::vector<int> src={ 1,2,3,4,5};
+  /*std::vector<int> src={ 1,2,3,4,5};
   std::vector<int> dst={ 0,0,0,0,0};
 
   copy(src.begin(),dst.begin());
@@ -48,5 +48,6 @@ int main(){
     
      int prod = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a * b;});
     std::cout << prod << "\n";
+    */
 
 }

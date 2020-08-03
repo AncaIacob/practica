@@ -24,4 +24,4 @@ private:
     void print();
 };
 #include "Queue.tpp"
-#endif
+#endif //QUEUE_HPP

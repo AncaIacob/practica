@@ -1,5 +1,6 @@
 #ifndef PRIORITYQUEUE_HPP
 #define PRIORITYQUEUE_HPP
+
 #include <iostream> 
 #include <cstddef>
 #include "Vector.hpp"
@@ -29,4 +30,5 @@ private:
 
 
 #include "PriorityQueue.tpp"
-#endif
+
+#endif /* PRIORITYQUEUE_HPP */

@@ -1,7 +1,8 @@
 #ifndef TASK_HPP
 #define TASK_HPP
+
 #include <cstdint>
-#include <ostream>
+#include <iostream>
 #include <functional>
 #include "TaskArgument.hpp"
 #include "TaskResult.hpp"
@@ -23,4 +24,6 @@ private:
     std::int64_t getPriority();
 };
 #include "Task.tpp"
-#endif  
+
+
+#endif /* TASK_HPP */

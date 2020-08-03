@@ -1,5 +1,6 @@
 #ifndef LIST_HPP
 #define LIST_HPP
+
 #include <cstddef>
 #include <iostream>
 #include "ListNode.hpp"
@@ -9,6 +10,7 @@ template <typename T>
 class List
 {
 public:
+   using TIterator = ListIterator<T>;
     List();
     List(const List& rhs);
     List(List&& rhs);
@@ -56,4 +58,5 @@ private:
 };
 
 #include "List.tpp"
-#endif 
+
+#endif /* LIST_HPP */

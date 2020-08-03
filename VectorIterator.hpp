@@ -1,5 +1,6 @@
 #ifndef VECTORITERATOR_HPP
 #define VECTORITERATOR_HPP
+
 #include <iostream>
 
 template <typename T>
@@ -29,4 +30,5 @@ private:
 };
 
 #include "VectorIterator.tpp"
-#endif 
+
+#endif /* VECTORITERATOR_HPP */

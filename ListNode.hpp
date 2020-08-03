@@ -1,6 +1,8 @@
-  #ifndef LISTNODE_HPP
-  #define LISTNODE_HPP
+#ifndef LISTNODE_HPP
+#define LISTNODE_HPP
+  
   #include <cstddef>
+
   template <typename T>
   class ListNode{
    public:
@@ -25,4 +27,5 @@ void setPrev(ListNode* prev);
   T m_data;
     };
 #include "ListNode.tpp"
-#endif  
+
+#endif /* LISTNODE_HPP */

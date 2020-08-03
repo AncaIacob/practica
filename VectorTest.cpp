@@ -3,18 +3,18 @@
 
 void TestGetSize()
 {
-    Vector vec;
-    assert(vec.GetSize() == 0);
+    Vector<int> vec;
+    assert(vec.getSize() == 0);
 }
 void TestGetCapacity()
 {
-    Vector vec;
-    assert(vec.GetCapacity() == 0);
+    Vector<int> vec;
+    assert(vec.getCapacity() == 0);
 }
 void TestInsert()
 {
-    Vector vec=
-    assert(vec.insert(2));
+    Vector <int>vec;
+    vec.insert(3,2);
 }
  int main()
  {

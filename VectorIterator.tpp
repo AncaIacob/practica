@@ -24,6 +24,7 @@ template <typename T>
 bool VectorIterator<T>::operator<(const VectorIterator& rhs)
 {
     return m_value < rhs.m_value;
+
 }
 
 template <typename T>

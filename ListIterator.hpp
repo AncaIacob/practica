@@ -1,5 +1,6 @@
-#ifndef LISTERATOR_HPP
-#define LISTERATOR_HPP
+#ifndef LISTITERATOR_HPP
+#define LISTITERATOR_HPP
+
 #include <iostream>
 #include "ListNode.hpp"
 
@@ -33,4 +34,5 @@ private:
 };
 
 #include "ListIterator.tpp"
-#endif
+
+#endif /* LISTITERATOR_HPP */
