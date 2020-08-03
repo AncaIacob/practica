@@ -16,11 +16,12 @@
  }
  TaskScheduler::~TaskScheduler()
  {
-       m_stop = true;
-        for (thread& t : m_threads)
-        {
-            t.join();
-        }
+           m_stop = true;
+     for(std::size_t id = 0; id < m_threads.getSize(); ++id)
+     {
+         m_threads[id].join();
+     }
+
  }
 
 
@@ -38,14 +39,14 @@
     m_tasks.push(std::move(packedTask));
     return futureTask;
  }
-  void processTask()
+  void TaskScheduler::processTasks()
     {
-        while (!m_stop = false)
+        while(m_stop !=true)
         {
-            std::packaged_task<TaskResult(TaskArgument)> task;
-            if (m_tasks.tryPop(task))
+            std::packaged_task<TaskResult()> task;
+            if(m_tasks.tryPop(task))
             {
-                 task();
+                task();
             }
         }
     }
