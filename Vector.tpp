@@ -28,7 +28,7 @@ Vector<T>::Vector(Vector&& rhs)
 {
     m_data = rhs.m_data;
     rhs.m_data = nullptr;
-    
+
     
 }
 
