@@ -18,7 +18,7 @@ class EventManager
 
         m_handlers[type].push_back(handler);
     }
-    void fire(eventType type, EventPayload payload)
+    void fire(EventType type, EventPayload payload)
     {
         for (auto& handler : m_handlers[type])
         {

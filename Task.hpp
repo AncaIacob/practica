@@ -1,11 +1,13 @@
 #ifndef TASK_HPP
 #define TASK_HPP
+
 #include <cstdint>
 #include <ostream>
 #include <future>
 #include "TaskArgument.hpp"
 #include "TaskResult.hpp"
 #include "Functional.hpp"
+
 
 class Task
 {
@@ -22,5 +24,6 @@ private:
     Function<void()> m_function;
 };
 #include "Task.tpp"
+
 
 #endif /* TASK_HPP */

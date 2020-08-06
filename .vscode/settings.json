@@ -49,6 +49,7 @@
         "functional": "cpp",
         "iterator": "cpp",
         "future": "cpp"
+
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

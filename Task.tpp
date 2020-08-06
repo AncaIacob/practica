@@ -2,18 +2,19 @@
 #include<iostream>
 
 
-Task::Task(int64_t prio, std::function<TaskResult()> func) 
+Task::Task(std::int64_t prio, std::packaged_task<TaskResult()>&& func)
 {
     m_priority = prio;
     m_function = func;
 }
 
-int64_t Task::getPriority()
+ int64_t Task::getPriority()
+
 {
     return m_priority;
 }
 
-bool Task::operator<(const Task& rhs)
+ bool Task::operator<(const Task& rhs)
 {
     if(m_priority < rhs.m_priority)
     {
@@ -34,5 +35,6 @@ std::ostream& operator<<(std::ostream& os, const Task& t)
 
     return os;
 }
+
 
 

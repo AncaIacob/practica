@@ -9,8 +9,8 @@ set(SOURCES
 )
 
 set(HEADERS 
-    include/Vector.h
-    include/List.h
+    include/Vector.hpp
+    include/List.hpp
     include/ListNode.hpp
 	include/Queue.hpp
 	include/PriorityQueue.hpp

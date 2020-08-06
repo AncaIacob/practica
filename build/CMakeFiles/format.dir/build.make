@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/anca/.ssh/practica/build
 include CMakeFiles/format.dir/progress.make
 
 CMakeFiles/format:
-	cd /home/anca/.ssh/practica && clang-format -style=file -i Main.cpp include/Vector.h include/List.h include/ListNode.hpp include/Queue.hpp include/PriorityQueue.hpp include/Task.hpp include/VectorIteraror.hpp include/ListIterator.hpp
+	cd /home/anca/.ssh/practica && clang-format -style=file -i Main.cpp include/Vector.hpp include/List.hpp include/ListNode.hpp include/Queue.hpp include/PriorityQueue.hpp include/Task.hpp include/VectorIteraror.hpp include/ListIterator.hpp
 
 format: CMakeFiles/format
 format: CMakeFiles/format.dir/build.make

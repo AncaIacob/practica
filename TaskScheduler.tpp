@@ -33,7 +33,7 @@
            a.sum = arg.a + arg.b; 
            return a;
            };
-    Task task(prio, lambda);
+   Task task(prio, lambda);
     std::packaged_task<TaskResult()> packedTask(task);
     std::future<TaskResult> futureTask = packedTask.get_future();
     m_tasks.push(std::move(packedTask));

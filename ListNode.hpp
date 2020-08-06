@@ -2,6 +2,7 @@
 #define LISTNODE_HPP
   
   #include <cstddef>
+  #include<ostream>
 
   template <typename T>
   class ListNode{
@@ -11,7 +12,7 @@
    ~ListNode();
     ListNode<T>& operator=(const ListNode& rhs);
     template<typename U>
-    friend std::ostream& operator<<(std::ostream& os, const ListNode<U>& vec);
+    friend std::ostream &operator<<(std::ostream &os, const ListNode<U>& vec);
      ListNode* getPrev();
    ListNode* getNext();
    
