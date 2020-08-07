@@ -2,7 +2,8 @@
 #include <iostream>
 
 template <typename T>
-ListIterator<T>::ListIterator(ListNode<T>* value):m_value(value){}
+ListIterator<T>::ListIterator(ListNode<T>* value):m_value(value)
+{}
 
 template <typename T>
 ListIterator<T>::ListIterator(const ListIterator& rhs):m_value(rhs.m_value){}
@@ -11,7 +12,7 @@ template <typename T>
 ListIterator<T>& ListIterator<T>::operator=(const ListIterator& rhs)
 {
     m_value = rhs.m_value;
-    return *this;
+ return *this;
 }
 
 template <typename T>
