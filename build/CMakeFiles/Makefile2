@@ -60,172 +60,76 @@ CMAKE_SOURCE_DIR = /home/anca/.ssh/practica
 CMAKE_BINARY_DIR = /home/anca/.ssh/practica/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/format.dir
+# Target rules for target CMakeFiles/Release.dir
 
 # All Build rule for target.
-CMakeFiles/format.dir/all:
-	$(MAKE) -f CMakeFiles/format.dir/build.make CMakeFiles/format.dir/depend
-	$(MAKE) -f CMakeFiles/format.dir/build.make CMakeFiles/format.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num= "Built target format"
-.PHONY : CMakeFiles/format.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/format.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/format.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-.PHONY : CMakeFiles/format.dir/rule
-
-# Convenience name for target.
-format: CMakeFiles/format.dir/rule
-
-.PHONY : format
-
-# clean rule for target.
-CMakeFiles/format.dir/clean:
-	$(MAKE) -f CMakeFiles/format.dir/build.make CMakeFiles/format.dir/clean
-.PHONY : CMakeFiles/format.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/format.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/practica.dir
-
-# All Build rule for target.
-CMakeFiles/practica.dir/all:
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/depend
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num=1,2 "Built target practica"
-.PHONY : CMakeFiles/practica.dir/all
+CMakeFiles/Release.dir/all:
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/depend
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num=3,4 "Built target Release"
+.PHONY : CMakeFiles/Release.dir/all
 
 # Include target in all.
-all: CMakeFiles/practica.dir/all
+all: CMakeFiles/Release.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/practica.dir/rule: cmake_check_build_system
+CMakeFiles/Release.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/practica.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Release.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-.PHONY : CMakeFiles/practica.dir/rule
+.PHONY : CMakeFiles/Release.dir/rule
 
 # Convenience name for target.
-practica: CMakeFiles/practica.dir/rule
+Release: CMakeFiles/Release.dir/rule
 
-.PHONY : practica
-
-# clean rule for target.
-CMakeFiles/practica.dir/clean:
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/clean
-.PHONY : CMakeFiles/practica.dir/clean
+.PHONY : Release
 
 # clean rule for target.
-clean: CMakeFiles/practica.dir/clean
+CMakeFiles/Release.dir/clean:
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/clean
+.PHONY : CMakeFiles/Release.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Release.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/vector_test_target.dir
+# Target rules for target CMakeFiles/Debug.dir
 
 # All Build rule for target.
-CMakeFiles/vector_test_target.dir/all:
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/depend
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num=3,4 "Built target vector_test_target"
-.PHONY : CMakeFiles/vector_test_target.dir/all
+CMakeFiles/Debug.dir/all:
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/depend
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num=1,2 "Built target Debug"
+.PHONY : CMakeFiles/Debug.dir/all
 
 # Include target in all.
-all: CMakeFiles/vector_test_target.dir/all
+all: CMakeFiles/Debug.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/vector_test_target.dir/rule: cmake_check_build_system
+CMakeFiles/Debug.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/vector_test_target.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Debug.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-.PHONY : CMakeFiles/vector_test_target.dir/rule
+.PHONY : CMakeFiles/Debug.dir/rule
 
 # Convenience name for target.
-vector_test_target: CMakeFiles/vector_test_target.dir/rule
+Debug: CMakeFiles/Debug.dir/rule
 
-.PHONY : vector_test_target
-
-# clean rule for target.
-CMakeFiles/vector_test_target.dir/clean:
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/clean
-.PHONY : CMakeFiles/vector_test_target.dir/clean
+.PHONY : Debug
 
 # clean rule for target.
-clean: CMakeFiles/vector_test_target.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/generate_coverage.dir
-
-# All Build rule for target.
-CMakeFiles/generate_coverage.dir/all:
-	$(MAKE) -f CMakeFiles/generate_coverage.dir/build.make CMakeFiles/generate_coverage.dir/depend
-	$(MAKE) -f CMakeFiles/generate_coverage.dir/build.make CMakeFiles/generate_coverage.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num= "Built target generate_coverage"
-.PHONY : CMakeFiles/generate_coverage.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/generate_coverage.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/generate_coverage.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-.PHONY : CMakeFiles/generate_coverage.dir/rule
-
-# Convenience name for target.
-generate_coverage: CMakeFiles/generate_coverage.dir/rule
-
-.PHONY : generate_coverage
+CMakeFiles/Debug.dir/clean:
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/clean
+.PHONY : CMakeFiles/Debug.dir/clean
 
 # clean rule for target.
-CMakeFiles/generate_coverage.dir/clean:
-	$(MAKE) -f CMakeFiles/generate_coverage.dir/build.make CMakeFiles/generate_coverage.dir/clean
-.PHONY : CMakeFiles/generate_coverage.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/generate_coverage.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/run_tests.dir
-
-# All Build rule for target.
-CMakeFiles/run_tests.dir/all: CMakeFiles/vector_test_target.dir/all
-	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/depend
-	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anca/.ssh/practica/build/CMakeFiles --progress-num= "Built target run_tests"
-.PHONY : CMakeFiles/run_tests.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/run_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/run_tests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anca/.ssh/practica/build/CMakeFiles 0
-.PHONY : CMakeFiles/run_tests.dir/rule
-
-# Convenience name for target.
-run_tests: CMakeFiles/run_tests.dir/rule
-
-.PHONY : run_tests
-
-# clean rule for target.
-CMakeFiles/run_tests.dir/clean:
-	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/clean
-.PHONY : CMakeFiles/run_tests.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/run_tests.dir/clean
+clean: CMakeFiles/Debug.dir/clean
 
 .PHONY : clean
 

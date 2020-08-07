@@ -22,9 +22,13 @@ public:
     std::size_t getSize();
     std::size_t getCapacity();
 
-    void insert(TIterator pos, T element);
-    void pushFront(T element);
-    void pushBack(T element);
+    void insert(TIterator pos, T& element);
+    void insert(TIterator pos, T&& element);
+     void pushFront(T& element);
+    void pushFront(T&& element);
+
+    void pushBack(T& element);
+    void pushBack(T&& element);
     
     void erase(TIterator pos);
     void popFront();

@@ -21,17 +21,22 @@ public:
     
     std::size_t getSize();
 
-    void insert(TIterator pos, T element);
-    void pushFront(T element);
-    void pushBack(T element);
+    void insert(TIterator pos, const T &element);
+    void insert(TIterator pos, T &&element);
+
+    void pushFront(const T &element);
+    void pushFront(T &&element);
+
+    void pushBack(const T &element);
+    void pushBack(T &&element);
 
     void erase(TIterator pos);
     void popFront();
     void popBack();
     
     const T& operator[](std::size_t idx) const;
-    T getFront();
-    T getBack();
+     T &getFront();
+     T &getBack();
 
     T& operator[](std::size_t idx);
     void setElement(std::size_t idx, T element);

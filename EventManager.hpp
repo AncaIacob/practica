@@ -3,24 +3,25 @@
 #include "EventPayload.hpp"
 #include "EventType.hpp"
 #include "Vector.hpp"
-#include "Functional.hpp"
-#include "iostream"
+#include <cstddef>
 #include <functional>
+#include <map>
+
 class EventManager
 {
   public:
-    void subscribe(EventType type, THandler handler)
+    void subscribe(EventType eventType, THandler handler)
     {
-        if(!m_handlers.contains(type) 
+        if(!m_handlers.contains(eventType))
         {
-            m_handlers[type] = {};
+            m_handlers[eventType] = {};
         }
 
-        m_handlers[type].push_back(handler);
+        m_handlers[eventType].pushBack(handler);
     }
-    void fire(EventType type, EventPayload payload)
+    void fire(EventType eventType, EventPayload payload)
     {
-        for (auto& handler : m_handlers[type])
+        for (auto& handler : m_handlers[eventType])
         {
             handler(payload);
         }
@@ -28,7 +29,7 @@ class EventManager
 
   private:
     std::function<void(const EventPayload&)> THandler;
-    map<EventType, vector<THandler>> m_handlers;
+    std::map <EventType, Vector<THandler>> m_handlers;
 };
+#endif 
 
-#endif /* EVENTMANAGER_HPP */

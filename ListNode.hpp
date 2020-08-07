@@ -18,7 +18,7 @@
    
 void setPrev(ListNode* prev);
    void setNext(ListNode* next);
-   T& getData();
+   T &getData();
    void setData(ListNode* data);
    void setDataT(T data);
    void print();

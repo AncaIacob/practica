@@ -107,35 +107,60 @@ size_t Vector<T>::getCapacity()
 }
 
 template <typename T>
-void Vector<T>::insert(TIterator pos, T element)
+void Vector<T>::insert(TIterator pos, T& element)
 {
-    if(m_capacity <= m_size) 
+    if(this->m_capacity <= this->m_size) 
     {
         reserve((1 + m_capacity) * 2);
     }
-
-    if(pos >= 0 && pos <= m_size){
-        for(TIterator i = pos; i < m_size - 1; ++i)
-        {
-            m_data[i+1] = m_data[i]; 
-        }
-         this->m_size++;
-         this->m_data[pos] = element;
+    
+    ++m_size;
+    for(TIterator it = end()-1; it != pos; --it)
+    {
+        *it = *(it-1) ; 
     }
+    *pos = element;
 }
 
 template <typename T>
-void Vector<T>::pushFront(T element)
+void Vector<T>::insert(TIterator pos, T&& element)
 {
-    insert(0,element);
+    if(this->m_capacity <= this->m_size) 
+    {
+        reserve((1 + m_capacity) * 2);
+    }
+    
+    ++m_size;
+    for(TIterator it = end()-1; it != pos; --it)
+    {
+        *it = *(it-1) ; 
+    }
+    *pos = std::move(element);
 }
 
 template <typename T>
-void Vector<T>::pushBack(T element)
+void Vector<T>::pushFront(T& element)
 {
-    insert(m_size, element);
+    insert(begin(),element);
 }
 
+template <typename T>
+void Vector<T>::pushFront(T&& element)
+{
+    insert(begin(),element);
+}
+
+template <typename T>
+void Vector<T>::pushBack(T& element)
+{
+    m_data[m_size++] = element;
+}
+
+template <typename T>
+void Vector<T>::pushBack(T&& element)
+{
+    m_data[m_size++] = std::move(element);
+}
 template <typename T>
  void Vector<T>::erase(TIterator pos)
  {
@@ -149,13 +174,13 @@ template <typename T>
 template <typename T>
 void Vector<T>::popFront()
 {
-    erase(0);
+    erase(begin());
 }
 
 template <typename T>
 void Vector<T>::popBack()
 {
-    erase(m_size);
+    erase(end()-1);
 }
 
 template <typename T>

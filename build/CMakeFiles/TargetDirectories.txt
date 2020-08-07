@@ -1,8 +1,4 @@
-/home/anca/.ssh/practica/build/CMakeFiles/rebuild_cache.dir
-/home/anca/.ssh/practica/build/CMakeFiles/format.dir
-/home/anca/.ssh/practica/build/CMakeFiles/practica.dir
-/home/anca/.ssh/practica/build/CMakeFiles/vector_test_target.dir
-/home/anca/.ssh/practica/build/CMakeFiles/generate_coverage.dir
-/home/anca/.ssh/practica/build/CMakeFiles/test.dir
 /home/anca/.ssh/practica/build/CMakeFiles/edit_cache.dir
-/home/anca/.ssh/practica/build/CMakeFiles/run_tests.dir
+/home/anca/.ssh/practica/build/CMakeFiles/rebuild_cache.dir
+/home/anca/.ssh/practica/build/CMakeFiles/Release.dir
+/home/anca/.ssh/practica/build/CMakeFiles/Debug.dir

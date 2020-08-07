@@ -11,7 +11,7 @@ Task::Task(std::int64_t prio, std::packaged_task<TaskResult()>&& func)
  int64_t Task::getPriority()
 
 {
-    return m_priority;
+    return m_priority; 
 }
 
  bool Task::operator<(const Task& rhs)
@@ -25,7 +25,7 @@ Task::Task(std::int64_t prio, std::packaged_task<TaskResult()>&& func)
 
 void Task::operator()()
 {
-     m_function();
+    m_function();
 }
 
 std::ostream& operator<<(std::ostream& os, const Task& t)

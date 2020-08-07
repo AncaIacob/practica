@@ -29,51 +29,75 @@ bool ListIterator<T>::operator<(const ListIterator& rhs)
 template <typename T>
 ListIterator<T>& ListIterator<T>::operator++()
 {
-    ++m_value;
+    if(m_value)
+    {
+        m_value = m_value->getNext();
+    }
     return *this;
 }
 
 template <typename T>
 ListIterator<T>& ListIterator<T>::operator--()
 {
-    --m_value;
+    if(m_value)
+    {
+        m_value = m_value->getPrev();
+    }
     return *this;
 }
 
 template <typename T>
  ListIterator<T>& ListIterator<T>::operator+=(std::size_t difference)
  {
-     m_value += difference;
+    while(difference)
+     {
+         m_value = m_value->getNext();
+         --difference;
+     }
      return *this;
  }
 
  template <typename T>
  ListIterator<T>& ListIterator<T>::operator-=(std::size_t difference)
- {
-     m_value -= difference;
+ {     while(difference)
+     {
+      m_value = m_value->getPrev();
+         --difference;
+     }
      return *this;
  }
 
  template <typename T>
  ListIterator<T> ListIterator<T>::operator+(std::size_t difference)
  {
-     ListIterator<T> it;
-     it = m_value + difference;
-
+      ListIterator it = *this;
+     while(difference)
+     {
+         it.m_value = it.m_value->getNext();
+         --difference;
+     }
      return it;
  }
 
  template <typename T>
  ListIterator<T> ListIterator<T>::operator-(std::size_t difference)
  {
-     ListIterator<T> it;
-     it = m_value - difference;
-
-     return it;
+     while(difference)
+     {
+         m_value = m_value->getPrev();
+         --difference;
+     }
+     return *this;
  }
  
- template <typename T>
- T& ListIterator<T>::operator*()
+  template <typename T>
+T& ListIterator<T>::operator*()
  {
-     return *m_value;
+     return m_value->getData();
+ }
+
+ template <typename T>
+ ListNode<T>* ListIterator<T>::get_m_value()
+ {
+     return m_value;
  }

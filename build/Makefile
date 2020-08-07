@@ -56,28 +56,6 @@ CMAKE_BINARY_DIR = /home/anca/.ssh/practica/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -88,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -122,69 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named format
+# Target rules for targets named Release
 
 # Build rule for target.
-format: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 format
-.PHONY : format
+Release: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Release
+.PHONY : Release
 
 # fast build rule for target.
-format/fast:
-	$(MAKE) -f CMakeFiles/format.dir/build.make CMakeFiles/format.dir/build
-.PHONY : format/fast
+Release/fast:
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/build
+.PHONY : Release/fast
 
 #=============================================================================
-# Target rules for targets named practica
+# Target rules for targets named Debug
 
 # Build rule for target.
-practica: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 practica
-.PHONY : practica
+Debug: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Debug
+.PHONY : Debug
 
 # fast build rule for target.
-practica/fast:
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/build
-.PHONY : practica/fast
-
-#=============================================================================
-# Target rules for targets named vector_test_target
-
-# Build rule for target.
-vector_test_target: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vector_test_target
-.PHONY : vector_test_target
-
-# fast build rule for target.
-vector_test_target/fast:
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/build
-.PHONY : vector_test_target/fast
-
-#=============================================================================
-# Target rules for targets named generate_coverage
-
-# Build rule for target.
-generate_coverage: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 generate_coverage
-.PHONY : generate_coverage
-
-# fast build rule for target.
-generate_coverage/fast:
-	$(MAKE) -f CMakeFiles/generate_coverage.dir/build.make CMakeFiles/generate_coverage.dir/build
-.PHONY : generate_coverage/fast
-
-#=============================================================================
-# Target rules for targets named run_tests
-
-# Build rule for target.
-run_tests: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 run_tests
-.PHONY : run_tests
-
-# fast build rule for target.
-run_tests/fast:
-	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
-.PHONY : run_tests/fast
+Debug/fast:
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/build
+.PHONY : Debug/fast
 
 Main.o: Main.cpp.o
 
@@ -192,7 +142,8 @@ Main.o: Main.cpp.o
 
 # target to build an object file
 Main.cpp.o:
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/Main.cpp.o
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/Main.cpp.o
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/Main.cpp.o
 .PHONY : Main.cpp.o
 
 Main.i: Main.cpp.i
@@ -201,7 +152,8 @@ Main.i: Main.cpp.i
 
 # target to preprocess a source file
 Main.cpp.i:
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/Main.cpp.i
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/Main.cpp.i
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/Main.cpp.i
 .PHONY : Main.cpp.i
 
 Main.s: Main.cpp.s
@@ -210,35 +162,9 @@ Main.s: Main.cpp.s
 
 # target to generate assembly for a file
 Main.cpp.s:
-	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/Main.cpp.s
+	$(MAKE) -f CMakeFiles/Release.dir/build.make CMakeFiles/Release.dir/Main.cpp.s
+	$(MAKE) -f CMakeFiles/Debug.dir/build.make CMakeFiles/Debug.dir/Main.cpp.s
 .PHONY : Main.cpp.s
-
-VectorTest.o: VectorTest.cpp.o
-
-.PHONY : VectorTest.o
-
-# target to build an object file
-VectorTest.cpp.o:
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/VectorTest.cpp.o
-.PHONY : VectorTest.cpp.o
-
-VectorTest.i: VectorTest.cpp.i
-
-.PHONY : VectorTest.i
-
-# target to preprocess a source file
-VectorTest.cpp.i:
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/VectorTest.cpp.i
-.PHONY : VectorTest.cpp.i
-
-VectorTest.s: VectorTest.cpp.s
-
-.PHONY : VectorTest.s
-
-# target to generate assembly for a file
-VectorTest.cpp.s:
-	$(MAKE) -f CMakeFiles/vector_test_target.dir/build.make CMakeFiles/vector_test_target.dir/VectorTest.cpp.s
-.PHONY : VectorTest.cpp.s
 
 # Help Target
 help:
@@ -246,20 +172,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... format"
-	@echo "... practica"
-	@echo "... vector_test_target"
-	@echo "... generate_coverage"
-	@echo "... test"
 	@echo "... edit_cache"
-	@echo "... run_tests"
+	@echo "... rebuild_cache"
+	@echo "... Release"
+	@echo "... Debug"
 	@echo "... Main.o"
 	@echo "... Main.i"
 	@echo "... Main.s"
-	@echo "... VectorTest.o"
-	@echo "... VectorTest.i"
-	@echo "... VectorTest.s"
 .PHONY : help
 
 

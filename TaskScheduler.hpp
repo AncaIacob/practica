@@ -19,10 +19,20 @@ public:
 
 
 private:
-    SynchronizedPriorityQueue<std::packaged_task<TaskResult()>> m_tasks;
+    SynchronizedPriorityQueue<Task> m_tasks;
     Vector<std::thread> m_threads;
     std::atomic<bool> m_stop;
-    void processTasks();
+    void processTasks()
+    {
+        while (!m_stop)
+        {
+            Task ts;
+            if (m_tasks.tryPop(ts))
+            {
+                ts();
+            }
+        }
+    }
     
 };
 

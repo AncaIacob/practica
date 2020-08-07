@@ -42,39 +42,33 @@ size_t SynchronizedPriorityQueue<T,TContainer, TLock>::getSize()
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
-void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T& task)
+void SynchronizedPriorityQueue<T, TContainer, TLock>::push(T&& task)
 {
     
-std::size_t pos = 0;
-    m_lock.lock();
-    for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
-    {
-        if (m_container.getElement() < task)
-        {
-            pos++;
-        }
-    }
-    m_container.insert(pos, task);
-    m_lock.unlock();
-}
-
-template <typename T, template <typename> typename TContainer, typename TLock>
-void SynchronizedPriorityQueue<T,TContainer, TLock>::push(T&& task)
-{
-    
-
     std::size_t pos = 0;
     m_lock.lock();
     for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
     {
-        if (m_container.getElement() < task)
+        if (m_container[idx] < task)
         {
-            pos++;
+            ++pos;
         }
     }
-    m_container.insert(pos, std::move(task));
+    m_container.insert(m_container.begin() + pos, std::move(task));
     m_lock.unlock();
 }
+
+template <typename T, template <typename> typename TContainer, typename TLock>
+T SynchronizedPriorityQueue<T, TContainer, TLock>::pop()
+{
+
+    std::lock_guard<std::mutex> guard(m_lock);
+    T task = m_container.getBack();
+    m_container.popBack();
+    return task;
+}
+
+    
 
 template <typename T, template <typename> typename TContainer, typename TLock>
 T SynchronizedPriorityQueue<T,TContainer,TLock>::pop()
@@ -91,11 +85,16 @@ template <typename T, template <typename> typename TContainer, typename TLock>
 bool SynchronizedPriorityQueue<T,TContainer,TLock>::tryPop(T& value)
 {
     m_lock.lock();
-    if(!m_container.isEmpty())
+
+    if (!m_container.isEmpty())
     {
-        value = m_container.pop();
+        value = std::move(m_container.getBack());
+        m_container.popBack();
+
+        m_lock.unlock();
         return true;
     }
+    m_lock.unlock();
     return false;
 }
 

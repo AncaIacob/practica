@@ -104,7 +104,7 @@ void ListNode<T>::setData(ListNode* data)
 template <typename T>
 void ListNode<T>::setDataT(T data)
 {
-     m_data = data;
+    m_data = data;
 }
 
 template <typename T>
